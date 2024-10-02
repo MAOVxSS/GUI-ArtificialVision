@@ -15,3 +15,6 @@ static_model_data_path = os.path.abspath(os.path.join(root_dir, "Data", "Static_
 static_model_data_labels_path = os.path.abspath(os.path.join(root_dir, "Data", "Static_Model_Data",
                                                       "keypoints_labels.csv"))
 
+# rutas para las interfaces gráficas y sus elementos
+assets_path = os.path.abspath(os.path.join(root_dir, "GUI", "Assets", "Home"))
+
