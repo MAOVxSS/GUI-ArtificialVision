@@ -16,5 +16,8 @@ static_model_data_labels_path = os.path.abspath(os.path.join(root_dir, "Data", "
                                                       "keypoints_labels.csv"))
 
 # rutas para las interfaces gráficas y sus elementos
-assets_path = os.path.abspath(os.path.join(root_dir, "GUI", "Assets", "Home"))
+assets_home_path = os.path.abspath(os.path.join(root_dir, "GUI", "Assets", "Home"))
+assets_information_path = os.path.abspath(os.path.join(root_dir, "GUI", "Assets", "Information"))
+assets_dictionary_path = os.path.abspath(os.path.join(root_dir, "GUI", "Assets", "Dictionary"))
+assets_dictionary_alphabet_path = os.path.abspath(os.path.join(root_dir, "GUI", "Assets", "Dictionary", "Alphabet"))
 

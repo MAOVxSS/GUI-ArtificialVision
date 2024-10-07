@@ -1,51 +1,57 @@
-from pathlib import Path
-# from tkinter import *
-# Explicit imports to satisfy Flake8
-from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from tkinter import Tk, Button, PhotoImage
 from PIL import Image, ImageTk
+from pathlib import Path
 
 # Rutas
-from Utils.paths import assets_path
+from Utils.paths import assets_home_path
 
+# Funciones auxiliares
+from Utils.gui_utils import setup_window, create_common_canvas, BUTTON_COMMON_CONFIG
+
+# Variables globales para gestionar el GIF
+gif_running = False
+gif_animation_id = None
 
 def relative_to_assets(path: str) -> Path:
-    return assets_path / Path(path)
+    return assets_home_path / Path(path)
 
+def create_home_window(window):
+    global gif_running, gif_animation_id
+    gif_running = False  # Detenemos cualquier animación de GIF anterior
 
-def create_home_window():
-    window = Tk()
-    window.geometry("1366x768")
-    window.configure(bg="#369FD6")
+    # Cancelar el ciclo `after` si hay uno activo
+    if gif_animation_id is not None:
+        try:
+            window.after_cancel(gif_animation_id)
+        except ValueError:
+            pass  # Si el ID no es válido, no hay necesidad de cancelar
 
-    canvas = Canvas(
-        window,
-        bg="#369FD6",
-        height=768,
-        width=1366,
-        bd=0,
-        highlightthickness=0,
-        relief="ridge"
-    )
-    canvas.place(x=0, y=0)
+    # Configurar la ventana
+    setup_window(window, background_color="#369FD6")
+
+    # Crear el canvas común
+    canvas = create_common_canvas(window)
 
     # Mantener referencias a las imágenes
     images = {}
 
+    # Crear botones e imágenes
     button_image_1 = PhotoImage(file=relative_to_assets("button_1.png"))
     images["button_1"] = button_image_1
-    button_1 = Button(image=button_image_1, borderwidth=0, highlightthickness=0, relief="flat")
+    button_1 = Button(image=button_image_1, **BUTTON_COMMON_CONFIG)
     button_1.place(x=88.0, y=478.0, width=446.0, height=130.0)
 
     button_image_2 = PhotoImage(file=relative_to_assets("button_2.png"))
     images["button_2"] = button_image_2
-    button_2 = Button(image=button_image_2, borderwidth=0, highlightthickness=0, relief="flat")
+    button_2 = Button(image=button_image_2, **BUTTON_COMMON_CONFIG)
     button_2.place(x=858.0, y=486.0, width=446.0, height=130.0)
 
     button_image_3 = PhotoImage(file=relative_to_assets("button_3.png"))
     images["button_3"] = button_image_3
-    button_3 = Button(image=button_image_3, borderwidth=0, highlightthickness=0, relief="flat")
+    button_3 = Button(image=button_image_3, **BUTTON_COMMON_CONFIG)
     button_3.place(x=1224.0, y=629.0, width=115.0, height=121.0)
 
+    # Colocar imágenes en el canvas
     image_image_1 = PhotoImage(file=relative_to_assets("image_1.png"))
     images["image_1"] = image_image_1
     canvas.create_image(683.0, 270.0, image=image_image_1)
@@ -63,7 +69,7 @@ def create_home_window():
     canvas.create_image(1030.0, 704.0, image=image_image_4)
 
     # Cargar y mostrar el GIF en lugar del rectángulo
-    gif_path = relative_to_assets("logo-tese-animado-2.gif")
+    gif_path = relative_to_assets("logo_tese_animado.gif")
     gif_image = Image.open(gif_path)
 
     frames = []
@@ -77,12 +83,25 @@ def create_home_window():
 
     # Definir la animación del GIF
     def update_gif(index):
-        canvas.itemconfig(gif_item, image=frames[index])
-        window.after(100, update_gif, (index + 1) % len(frames))
+        global gif_animation_id
+        if gif_running:  # Solo continuar si la animación debe seguir corriendo
+            canvas.itemconfig(gif_item, image=frames[index])
+            gif_animation_id = window.after(100, update_gif, (index + 1) % len(frames))
 
     gif_item = canvas.create_image(647.0, 104.5, image=frames[0])
+    gif_running = True  # Iniciar la animación
     update_gif(0)
 
     window.resizable(False, False)
 
-    return window, button_1, button_2, button_3, images
+    return button_1, button_2, button_3, images
+
+def stop_gif_animation(window):
+    global gif_running, gif_animation_id
+    gif_running = False  # Detener la animación del GIF
+    if gif_animation_id is not None:
+        try:
+            # Cancelar cualquier tarea `after` activa
+            window.after_cancel(gif_animation_id)
+        except ValueError:
+            pass
