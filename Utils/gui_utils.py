@@ -40,11 +40,28 @@ BUTTON_COMMON_CONFIG = {
     "relief": "flat"
 }
 
-# Función de botón de regreso a la página de inicio
-def on_back_button_home_click(window):
-    print("Regresando al Inicio")
 
-    # Importaciones de Home
+# Función para centrar la ventana
+def center_window(window, width=1366, height=768):
+    """
+    Centra la ventana en la pantalla manteniendo el tamaño especificado.
+    """
+    # Obtener el tamaño de la pantalla
+    screen_width = window.winfo_screenwidth()
+    screen_height = window.winfo_screenheight()
+
+    # Calcular la posición x e y para centrar la ventana
+    x_position = (screen_width // 2) - (width // 2)
+    y_position = (screen_height // 2) - (height // 2)
+
+    # Configurar la geometría de la ventana
+    window.geometry(f"{width}x{height}+{x_position}+{y_position}")
+
+# FUNCIONES PARA IR A LAS VENTANAS ****************************************************************************
+
+# Función para generar la ventana "Inicio"
+def go_home_window(window):
+    # Funciones para crear la ventana
     from GUI.Home.home_ui import create_home_window
     from GUI.Home.home_logic import setup_home_window_logic
 
@@ -53,16 +70,79 @@ def on_back_button_home_click(window):
 
     # Crear una nueva ventana para Home
     new_window = Tk()
-    new_window.geometry("1366x768")
+    center_window(new_window)
 
     # Crear la interfaz "home"
-    button_1, button_2, button_3, images = create_home_window(new_window)
+    button_dictionary, button_information, button_lessons, images = create_home_window(new_window)
 
     # Configurar la lógica de la ventana "home"
-    setup_home_window_logic(new_window, button_1, button_2, button_3)
+    setup_home_window_logic(new_window, button_dictionary, button_lessons, button_information)
 
     # Iniciar el loop principal para la nueva ventana
     new_window.mainloop()
 
+# Función para generar la ventana "Diccionario"
+def go_dictionary_window(window):
+    # Funciones para crear la ventana
+    from GUI.Dictionary.dictionary_ui import create_dictionary_window
 
+    # Destruir la ventana actual (Home)
+    window.destroy()
 
+    # Crear una nueva ventana para "dictionary"
+    new_window = Tk()
+    center_window(new_window)
+    button_alphabet, button_vocabulary, button_go_back, images = create_dictionary_window(new_window)
+
+    # Iniciar el bucle principal para la nueva ventana
+    new_window.mainloop()
+
+# Función para generar la ventana "Lecciones"
+def go_lessons_window(window):
+    # Importar la función necesaria para crear la ventana "dictionary"
+    from GUI.Lessons.lessons_ui import create_lessons_window
+
+    # Destruir la ventana actual (Home)
+    window.destroy()
+
+    # Crear una nueva ventana para "dictionary"
+    new_window = Tk()
+    center_window(new_window)
+    button_alphabet, button_vocabulary, button_go_back, images = create_lessons_window(new_window)
+
+    # Iniciar el bucle principal para la nueva ventana
+    new_window.mainloop()
+
+# Función para generar la ventana "Alfabeto"
+def go_dictionary_alphabet_window(window):
+    from GUI.Dictionary.Alphabet.dictionary_alphabet_ui import create_alphabet_window
+
+    # Destruir la ventana actual (Home)
+    window.destroy()
+
+    # Crear una nueva ventana para "dictionary"
+    new_window = Tk()
+    center_window(new_window)
+    (button_a, button_b, button_c, button_d, button_e, button_f, button_g, button_h,
+     button_i, button_j, button_k, button_l, button_m, button_n, button_nn, button_o, button_p,
+     button_q, button_r, button_s, button_t, button_u, button_v, button_w, button_x,
+     button_y, button_z, button_go_back, button_go_home, images) = create_alphabet_window(new_window)
+
+    # Iniciar el bucle principal para la nueva ventana
+    new_window.mainloop()
+
+# Función para generar la ventana "Alfabeto"
+def go_lessons_alphabet_window(window):
+    from GUI.Lessons.Alphabet.lessons_alphabet_ui import create_lessons_alphabet_window
+
+    # Destruir la ventana actual (Home)
+    window.destroy()
+
+    # Crear una nueva ventana para "dictionary"
+    new_window = Tk()
+    center_window(new_window)
+    (button_image_home, button_image_go_back, button_image_random_lesson,
+     button_image_complete_lesson, images) = create_lessons_alphabet_window(new_window)
+
+    # Iniciar el bucle principal para la nueva ventana
+    new_window.mainloop()

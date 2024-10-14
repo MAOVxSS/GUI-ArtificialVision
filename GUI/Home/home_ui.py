@@ -36,20 +36,20 @@ def create_home_window(window):
     images = {}
 
     # Crear botones e imágenes
-    button_image_1 = PhotoImage(file=relative_to_assets("button_1.png"))
-    images["button_1"] = button_image_1
-    button_1 = Button(image=button_image_1, **BUTTON_COMMON_CONFIG)
-    button_1.place(x=88.0, y=478.0, width=446.0, height=130.0)
+    button_image_dictionary = PhotoImage(file=relative_to_assets("diccionario.png"))
+    images["diccionario"] = button_image_dictionary
+    button_dictionary = Button(image=button_image_dictionary, **BUTTON_COMMON_CONFIG)
+    button_dictionary.place(x=88.0, y=478.0, width=446.0, height=130.0)
 
-    button_image_2 = PhotoImage(file=relative_to_assets("button_2.png"))
-    images["button_2"] = button_image_2
-    button_2 = Button(image=button_image_2, **BUTTON_COMMON_CONFIG)
-    button_2.place(x=858.0, y=486.0, width=446.0, height=130.0)
+    button_image_information = PhotoImage(file=relative_to_assets("informacion.png"))
+    images["informacion"] = button_image_information
+    button_information = Button(image=button_image_information, **BUTTON_COMMON_CONFIG)
+    button_information.place(x=1224.0, y=629.0, width=115.0, height=121.0)
 
-    button_image_3 = PhotoImage(file=relative_to_assets("button_3.png"))
-    images["button_3"] = button_image_3
-    button_3 = Button(image=button_image_3, **BUTTON_COMMON_CONFIG)
-    button_3.place(x=1224.0, y=629.0, width=115.0, height=121.0)
+    button_image_lessons = PhotoImage(file=relative_to_assets("lecciones.png"))
+    images["lecciones"] = button_image_lessons
+    button_lessons = Button(image=button_image_lessons, **BUTTON_COMMON_CONFIG)
+    button_lessons.place(x=858.0, y=486.0, width=446.0, height=130.0)
 
     # Colocar imágenes en el canvas
     image_image_1 = PhotoImage(file=relative_to_assets("image_1.png"))
@@ -94,7 +94,7 @@ def create_home_window(window):
 
     window.resizable(False, False)
 
-    return button_1, button_2, button_3, images
+    return button_dictionary, button_information, button_lessons, images
 
 def stop_gif_animation(window):
     global gif_running, gif_animation_id

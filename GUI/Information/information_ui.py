@@ -2,7 +2,7 @@ from tkinter import Canvas, Button, PhotoImage
 from pathlib import Path
 
 # Rutas
-from Utils.paths import assets_information_path
+from Utils.paths import assets_information_path, assets_home_path
 from Utils.gui_utils import setup_window, create_common_canvas, BUTTON_COMMON_CONFIG
 
 def relative_to_assets(path: str) -> Path:
@@ -31,16 +31,15 @@ def create_information_window(window):
     images["image_3"] = image_image_3
     canvas.create_image(957.0, 321.0, image=image_image_3)
 
-    # Crear botón "Regresar"
-    button_image_1 = PhotoImage(file=relative_to_assets("button_1.png"))
-    images["button_1"] = button_image_1
-    button_1 = Button(image=button_image_1, **BUTTON_COMMON_CONFIG)
-    button_1.place(x=731.0, y=620.0, width=455.0, height=126.0)
+    button_image_go_back = PhotoImage(file=relative_to_assets("regresar.png"))
+    images["regresar"] = button_image_go_back
+    button_go_back = Button(image=button_image_go_back, **BUTTON_COMMON_CONFIG)
+    button_go_back.place(x=731.0, y=620.0, width=455.0, height=126.0)
 
-    # Configurar la lógica del botón "Regresar"
-    from Utils.gui_utils import on_back_button_home_click
-    button_1.config(command=lambda: on_back_button_home_click(window))
+    # Lógica del botón "Regresar"
+    from Utils.gui_utils import go_home_window
+    button_go_back.config(command=lambda: go_home_window(window))
 
     window.resizable(False, False)
 
-    return button_1, images
+    return button_go_back, images

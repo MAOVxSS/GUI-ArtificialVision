@@ -20,4 +20,6 @@ assets_home_path = os.path.abspath(os.path.join(root_dir, "GUI", "Assets", "Home
 assets_information_path = os.path.abspath(os.path.join(root_dir, "GUI", "Assets", "Information"))
 assets_dictionary_path = os.path.abspath(os.path.join(root_dir, "GUI", "Assets", "Dictionary"))
 assets_dictionary_alphabet_path = os.path.abspath(os.path.join(root_dir, "GUI", "Assets", "Dictionary", "Alphabet"))
+assets_lessons_alphabet_path = os.path.abspath(os.path.join(root_dir, "GUI", "Assets", "Lessons_Alphabet"))
+assets_letters_information_path = os.path.abspath(os.path.join(root_dir, "GUI", "Assets", "Letters_Information"))
 

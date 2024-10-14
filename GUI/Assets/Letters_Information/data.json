@@ -1,0 +1,329 @@
+{
+  "A": {
+    "letter": "A",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra todos los dedos de una mano como si estuvieras haciendo un puño.\n",
+      "2. Muestra las uñas de esa mano.\n",
+      "3. Estira el dedo pulgar hacia un lado, como si estuviera señalando algo.\n",
+      "4. Asegúrate de que la palma de tu mano esté mirando hacia adelante, como si la mostraras a alguien."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_a.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_a.png"
+  },
+  "B": {
+    "letter": "B",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Estira los cuatro dedos (índice, medio, anular y meñique) bien juntos, como si estuvieran pegados entre sí.\n",
+      "2. Doble el pulgar hacia la palma, como si lo escondieras.\n",
+      "3. Asegúrate de que la palma de la mano esté mirando hacia adelante."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_b.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_b.png"
+  },
+  "C": {
+    "letter": "C",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Mantén los cuatro dedos (índice, medio, anular y meñique) bien juntos, pero dóblalos un poco, como si estuvieras sosteniendo una pelota pequeña.\n",
+      "2. Pon el pulgar en la misma posición curva, como si también estuviera agarrando algo.\n",
+      "3. La palma de la mano debe mirar hacia un lado."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_c.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_c.png"
+  },
+  "D": {
+    "letter": "D",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Junta las puntas de los dedos medio, anular, meñique y pulgar, como si estuvieras haciendo un pellizco.\n",
+      "2. Estira el dedo índice hacia arriba, manteniéndolo recto.\n",
+      "3. La palma de la mano debe estar mirando hacia adelante."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_d.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_d.png"
+  },
+  "E": {
+    "letter": "E",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Dobla todos los dedos de la mano completamente, como si estuvieras haciendo un puño, pero sin cerrar del todo.\n",
+      "2. Asegúrate de que las uñas se vean hacia el frente.\n",
+      "3. La palma de la mano debe mirar hacia adelante."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_e.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_e.png"
+  },
+  "F": {
+    "letter": "F",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Mantén la mano abierta con todos los dedos bien juntos.\n",
+      "2. Doble el dedo índice hasta que toque la yema del pulgar, formando un círculo.\n",
+      "3. Asegúrate de que la palma de la mano esté mirando hacia un lado."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_f.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_f.png"
+  },
+  "G": {
+    "letter": "G",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano, pero deja el dedo índice y el pulgar estirados, como si estuvieras señalando algo pequeño.\n",
+      "2. La palma de la mano debe estar mirando hacia ti."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_g.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_g.png"
+  },
+  "H": {
+    "letter": "H",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano, pero estira y junta bien los dedos índice y medio.\n",
+      "2. Extiende el dedo pulgar, apuntando hacia arriba.\n",
+      "3. Asegúrate de que la palma de la mano esté mirando hacia ti."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_h.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_h.png"
+  },
+  "I": {
+    "letter": "I",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano, dejando el dedo meñique estirado hacia arriba.\n",
+      "2. La palma de la mano debe estar de lado, como si la mostraras de perfil."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_i.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_i.png"
+  },
+  "J": {
+    "letter": "J",
+    "type": "Letra",
+    "movement": "Dinamico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano, manteniendo el dedo meñique bien estirado hacia arriba.\n",
+      "2. Con la palma de la mano de lado, dibuja una 'J' en el aire, moviendo el dedo meñique en forma de curva."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_j.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_j.png"
+  },
+  "K": {
+    "letter": "K",
+    "type": "Letra",
+    "movement": "Dinamico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano, pero deja los dedos índice, medio y pulgar estirados.\n",
+      "2. Coloca la yema del pulgar entre el índice y el medio, como si los separaras.\n",
+      "3. Mueve la muñeca hacia arriba, manteniendo la posición de los dedos."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_k.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_k.png"
+  },
+  "L": {
+    "letter": "L",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano, dejando los dedos índice y pulgar estirados, formando la letra 'L' con la mano.\n",
+      "2. Asegúrate de que la palma de la mano esté mirando hacia adelante."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_l.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_l.png"
+  },
+  "M": {
+    "letter": "M",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano como si estuvieras haciendo un puño.\n",
+      "2. Coloca los dedos índice, medio y anular sobre el pulgar, cubriéndolo."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_m.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_m.png"
+  },
+  "N": {
+    "letter": "N",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano.\n",
+      "2. Coloca los dedos índice y medio sobre el pulgar, cubriéndolo."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_n.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_n.png"
+  },
+  "NN": {
+    "letter": "NN",
+    "type": "Letra",
+    "movement": "Dinamico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano.\n",
+      "2. Coloca los dedos índice y medio sobre el pulgar, como en la seña de la letra 'N'.\n",
+      "3. Mueve la muñeca suavemente de un lado a otro."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_nn.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_nn.png"
+  },
+  "O": {
+    "letter": "O",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Junta las puntas de todos los dedos para formar un círculo, como si estuvieras haciendo la letra 'O' con la mano.\n",
+      "2. Asegúrate de que los dedos se toquen suavemente por las puntas."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_o.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_o.png"
+  },
+  "P": {
+    "letter": "P",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano, pero estira los dedos índice, medio y pulgar.\n",
+      "2. Coloca la yema del pulgar entre el índice y el medio, como si los separaras.\n",
+      "3. La palma de la mano debe mirar hacia abajo."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_p.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_p.png"
+  },
+  "Q": {
+    "letter": "Q",
+    "type": "Letra",
+    "movement": "Dinamico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano y coloca los dedos índice y pulgar en forma de garra, como si estuvieras agarrando algo pequeño.\n",
+      "2. Asegúrate de que la palma de la mano esté mirando hacia abajo.\n",
+      "3. Mueve la muñeca de un lado a otro, haciendo un ligero movimiento."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_q.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_q.png"
+  },
+  "R": {
+    "letter": "R",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano y estira los dedos índice y medio.\n",
+      "2. Entrelaza estos dos dedos, cruzándolos.\n",
+      "3. La palma de la mano debe mirar al frente."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_r.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_r.png"
+  },
+  "S": {
+    "letter": "S",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano completamente, como si estuvieras haciendo un puño.\n",
+      "2. Coloca el pulgar sobre los otros dedos, cubriéndolos.\n",
+      "3. Asegúrate de que la palma de la mano esté mirando hacia adelante."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_s.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_s.png"
+  },
+  "T": {
+    "letter": "T",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano y coloca el pulgar entre los dedos índice y medio, como si los separaras un poco.\n",
+      "2. La palma de la mano debe mirar al frente."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_t.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_t.png"
+  },
+  "U": {
+    "letter": "U",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano, pero estira los dedos índice y medio, manteniéndolos juntos.\n",
+      "2. Asegúrate de que la palma de la mano esté mirando hacia adelante."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_u.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_u.png"
+  },
+  "V": {
+    "letter": "V",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano, pero estira los dedos índice y medio, separándolos un poco, como si formaras una 'V'.\n",
+      "2. Asegúrate de que la palma de la mano esté mirando hacia adelante."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_v.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_v.png"
+  },
+  "W": {
+    "letter": "W",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano, pero estira los dedos índice, medio y anular, separándolos un poco, como si formaras una 'W'.\n",
+      "2. Asegúrate de que la palma de la mano esté mirando hacia adelante."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_w.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_w.png"
+  },
+  "X": {
+    "letter": "X",
+    "type": "Letra",
+    "movement": "Dinamico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano, pero forma una 'garra' con los dedos índice y pulgar, como si estuvieras agarrando algo pequeño.\n",
+      "2. La palma de la mano debe estar de lado.\n",
+      "3. Haz un movimiento hacia adelante y luego hacia atrás con la mano."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_x.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_x.png"
+  },
+  "Z": {
+    "letter": "Z",
+    "type": "Letra",
+    "movement": "Dinamico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano, pero estira el dedo índice.\n",
+      "2. Con la palma de la mano hacia el frente, usa el dedo índice para dibujar una 'Z' en el aire."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_z.png",
+    "sign_path": "GUI/Assets/Letters_Information/img_letter_z.png"
+  }
+}
