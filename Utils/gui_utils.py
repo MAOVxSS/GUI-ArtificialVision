@@ -43,9 +43,6 @@ BUTTON_COMMON_CONFIG = {
 
 # Función para centrar la ventana
 def center_window(window, width=1366, height=768):
-    """
-    Centra la ventana en la pantalla manteniendo el tamaño especificado.
-    """
     # Obtener el tamaño de la pantalla
     screen_width = window.winfo_screenwidth()
     screen_height = window.winfo_screenheight()

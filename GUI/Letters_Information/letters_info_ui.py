@@ -4,20 +4,17 @@ from tkinter import Button, PhotoImage
 # Funciones auxiliares
 from Utils.gui_utils import setup_window, create_common_canvas, BUTTON_COMMON_CONFIG
 # Rutas
-from Utils.paths import assets_letters_information_path, assets_dictionary_alphabet_path
+from Utils.paths import assets_letters_information_path
 
 
 # Ruta hacia el archivo JSON e imágenes de la seña
 def relative_to_assets_data(path: str) -> Path:
     return assets_letters_information_path / Path(path)
 
+def create_letters_information_window(window, actual_letter):
+    # Se guarda la letra actual para mantenerla en las ventanas
+    actual_letter = actual_letter
 
-# Ruta hacia los iconos
-def relative_to_assets_icons(path: str) -> Path:
-    return assets_dictionary_alphabet_path / Path(path)
-
-
-def create_letters_information_window(window):
     # Configurar la ventana
     setup_window(window, background_color="#369FD6")
 
@@ -28,39 +25,23 @@ def create_letters_information_window(window):
     images = {}
 
     canvas.create_rectangle(
-        # Este rectangulo tendra la imagen extraida con la ruta del JSON "sign_path"
-        609.0,
-        28.0,
-        1338.0,
-        529.0,
-        fill="#233D4D",
-        outline="")
+        # Este rectángulo contendrá imagen extraída con la ruta del JSON "sign_path"
+        609.0, 28.0, 1338.0, 529.0, fill="#233D4D", outline="")
 
     canvas.create_rectangle(
-        # Este rectangulo contendra el texto dinamico "description" del JSON data.json
-        28.0,
-        219.0,
-        558.0,
-        738.0,
-        fill="#233D4D",
-        outline="")
+        # Este rectángulo contendrá el texto dinámico "description" del JSON data.json
+        28.0, 219.0, 558.0, 738.0, fill="#233D4D", outline="")
 
     canvas.create_rectangle(
-        # Este rectangulo es solo decorativo para el texto
-        44.0,
-        43.0,
-        320.0,
-        191.0,
-        fill="#F6AA1C",
-        outline="")
-
-    # Esta imagen, la ruta séra extraida a traves de la ruta "icon_path" del archivo JSON
-    # Por ahora se le da un icono en una carpeta local
-    image_image_1 = PhotoImage(file=relative_to_assets_data("image_1.png"))
-    images["image_1"] = image_image_1
-    canvas.create_image(438.0, 117.0, image=image_image_1)
+        # Este rectángulo es solo decorativo para el texto
+        44.0, 43.0, 320.0, 191.0, fill="#F6AA1C", outline="")
 
     # Botones
+    button_image_help = PhotoImage(file=relative_to_assets_data("pregunta.png"))
+    images["help_icon"] = button_image_help
+    button_help = Button(image=button_image_help, **BUTTON_COMMON_CONFIG)
+    button_help.place(x=437.0, y=630.0, width=87.0, height=70.0)
+
     button_image_go_back = PhotoImage(file=relative_to_assets_data("button_1.png"))
     images["button_1"] = button_image_go_back
     button_go_back = Button(image=button_image_go_back, **BUTTON_COMMON_CONFIG)
@@ -78,11 +59,21 @@ def create_letters_information_window(window):
 
     # Lógica del botón "Regresar"
     from Utils.gui_utils import go_dictionary_alphabet_window
-    button_go_back.config(command=lambda: go_dictionary_alphabet_window(window))
+    from GUI.Letters_Information.letters_info_logic import stop_letter_gif_animation
+    button_go_back.config(command=lambda: (stop_letter_gif_animation(window), go_dictionary_alphabet_window(window)))
 
     # Lógica del botón "Inicio"
     from Utils.gui_utils import go_home_window
-    button_go_home.config(command=lambda: go_home_window(window))
+    button_go_home.config(command=lambda: (stop_letter_gif_animation(window), go_home_window(window)))
+
+    # Lógica del botón "Ayuda"
+    from GUI.Letters_Information.letters_info_logic import show_help_window
+    button_help.config(command=lambda: show_help_window())
+
+    # Lógica del botón "Camera"
+    from GUI.Camera.camera_logic import go_camera_window
+    button_go_camera.config(command=lambda: (stop_letter_gif_animation(window),
+                                             go_camera_window(window, actual_letter)))
 
     window.resizable(False, False)
 

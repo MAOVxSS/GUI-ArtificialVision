@@ -105,3 +105,4 @@ def stop_gif_animation(window):
             window.after_cancel(gif_animation_id)
         except ValueError:
             pass
+

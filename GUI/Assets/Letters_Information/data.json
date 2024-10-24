@@ -11,7 +11,7 @@
       "4. Asegúrate de que la palma de tu mano esté mirando hacia adelante, como si la mostraras a alguien."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_a.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_a.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_a.png"
   },
   "B": {
     "letter": "B",
@@ -24,7 +24,7 @@
       "3. Asegúrate de que la palma de la mano esté mirando hacia adelante."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_b.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_b.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_b.png"
   },
   "C": {
     "letter": "C",
@@ -37,7 +37,7 @@
       "3. La palma de la mano debe mirar hacia un lado."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_c.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_c.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_c.png"
   },
   "D": {
     "letter": "D",
@@ -50,7 +50,7 @@
       "3. La palma de la mano debe estar mirando hacia adelante."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_d.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_d.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_d.png"
   },
   "E": {
     "letter": "E",
@@ -63,7 +63,7 @@
       "3. La palma de la mano debe mirar hacia adelante."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_e.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_e.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_e.png"
   },
   "F": {
     "letter": "F",
@@ -76,7 +76,7 @@
       "3. Asegúrate de que la palma de la mano esté mirando hacia un lado."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_f.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_f.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_f.png"
   },
   "G": {
     "letter": "G",
@@ -88,7 +88,7 @@
       "2. La palma de la mano debe estar mirando hacia ti."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_g.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_g.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_g.png"
   },
   "H": {
     "letter": "H",
@@ -101,7 +101,7 @@
       "3. Asegúrate de que la palma de la mano esté mirando hacia ti."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_h.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_h.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_h.png"
   },
   "I": {
     "letter": "I",
@@ -113,7 +113,7 @@
       "2. La palma de la mano debe estar de lado, como si la mostraras de perfil."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_i.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_i.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_i.png"
   },
   "J": {
     "letter": "J",
@@ -125,7 +125,7 @@
       "2. Con la palma de la mano de lado, dibuja una 'J' en el aire, moviendo el dedo meñique en forma de curva."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_j.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_j.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/gif_letter_j.gif"
   },
   "K": {
     "letter": "K",
@@ -138,7 +138,7 @@
       "3. Mueve la muñeca hacia arriba, manteniendo la posición de los dedos."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_k.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_k.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/gif_letter_k.gif"
   },
   "L": {
     "letter": "L",
@@ -150,7 +150,7 @@
       "2. Asegúrate de que la palma de la mano esté mirando hacia adelante."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_l.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_l.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_l.png"
   },
   "M": {
     "letter": "M",
@@ -162,7 +162,7 @@
       "2. Coloca los dedos índice, medio y anular sobre el pulgar, cubriéndolo."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_m.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_m.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_m.png"
   },
   "N": {
     "letter": "N",
@@ -174,7 +174,7 @@
       "2. Coloca los dedos índice y medio sobre el pulgar, cubriéndolo."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_n.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_n.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_n.png"
   },
   "NN": {
     "letter": "NN",
@@ -187,7 +187,7 @@
       "3. Mueve la muñeca suavemente de un lado a otro."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_nn.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_nn.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/gif_letter_nn.gif"
   },
   "O": {
     "letter": "O",
@@ -199,7 +199,7 @@
       "2. Asegúrate de que los dedos se toquen suavemente por las puntas."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_o.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_o.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_o.png"
   },
   "P": {
     "letter": "P",
@@ -212,7 +212,7 @@
       "3. La palma de la mano debe mirar hacia abajo."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_p.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_p.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_p.png"
   },
   "Q": {
     "letter": "Q",
@@ -225,7 +225,7 @@
       "3. Mueve la muñeca de un lado a otro, haciendo un ligero movimiento."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_q.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_q.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/gif_letter_q.gif"
   },
   "R": {
     "letter": "R",
@@ -238,7 +238,7 @@
       "3. La palma de la mano debe mirar al frente."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_r.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_r.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_r.png"
   },
   "S": {
     "letter": "S",
@@ -251,7 +251,7 @@
       "3. Asegúrate de que la palma de la mano esté mirando hacia adelante."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_s.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_s.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_s.png"
   },
   "T": {
     "letter": "T",
@@ -263,7 +263,7 @@
       "2. La palma de la mano debe mirar al frente."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_t.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_t.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_t.png"
   },
   "U": {
     "letter": "U",
@@ -275,7 +275,7 @@
       "2. Asegúrate de que la palma de la mano esté mirando hacia adelante."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_u.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_u.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_u.png"
   },
   "V": {
     "letter": "V",
@@ -287,7 +287,7 @@
       "2. Asegúrate de que la palma de la mano esté mirando hacia adelante."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_v.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_v.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_v.png"
   },
   "W": {
     "letter": "W",
@@ -299,7 +299,7 @@
       "2. Asegúrate de que la palma de la mano esté mirando hacia adelante."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_w.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_w.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_w.png"
   },
   "X": {
     "letter": "X",
@@ -312,7 +312,19 @@
       "3. Haz un movimiento hacia adelante y luego hacia atrás con la mano."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_x.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_x.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/gif_letter_x.gif"
+  },
+  "Y": {
+    "letter": "Y",
+    "type": "Letra",
+    "movement": "Estatico",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Cierra la mano, pero estira el dedo meñique y el pulgar, como si estuvieras haciendo el gesto de 'teléfono'.\n",
+      "2. Asegúrate de que la palma de la mano esté mirando hacia ti."
+    ],
+    "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_y.png",
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/img_letter_y.png"
   },
   "Z": {
     "letter": "Z",
@@ -324,6 +336,6 @@
       "2. Con la palma de la mano hacia el frente, usa el dedo índice para dibujar una 'Z' en el aire."
     ],
     "icon_path": "GUI/Assets/Dictionary/Alphabet/letter_z.png",
-    "sign_path": "GUI/Assets/Letters_Information/img_letter_z.png"
+    "sign_path": "GUI/Assets/Letters_Information/Img_Letters/gif_letter_z.gif"
   }
 }
