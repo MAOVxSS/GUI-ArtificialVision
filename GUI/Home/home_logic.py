@@ -1,68 +1,60 @@
 from tkinter import Tk
-from GUI.Home.home_ui import stop_gif_animation
-from Utils.gui_utils import center_window
+from PIL import Image, ImageTk
+
+# Función para centrar la ventana
+from GUI.gui_utils import center_window
+
+# Variables globales para gestionar la animación del GIF en la ventana de inicio
+gif_running = False  # Indica si el GIF está en ejecución
+gif_animation_id = None  # ID del ciclo `after` para animar el GIF
 
 
-# Función que se ejecuta cuando se hace clic en el botón diccionario
-def button_dictionary_click(window):
-    stop_gif_animation(window)  # Detener la animación del GIF antes de cambiar de ventana
+def show_tese_gif(window, canvas):
+    global gif_running, gif_animation_id
 
-    # Importar la función necesaria para crear la ventana "dictionary"
-    from GUI.Dictionary.dictionary_ui import create_dictionary_window
+    gif_running = False  # Detenemos cualquier animación de GIF anterior
 
-    # Destruir la ventana actual (Home)
-    window.destroy()
+    # Cancelar el ciclo `after` si hay uno activo
+    if gif_animation_id is not None:
+        try:
+            window.after_cancel(gif_animation_id)
+        except ValueError:
+            pass  # Si el ID no es válido, no hay necesidad de cancelar
 
-    # Crear una nueva ventana para "dictionary"
-    new_window = Tk()
-    center_window(new_window)
-    button_alphabet, button_vocabulary, button_go_back, images = create_dictionary_window(new_window)
+    # Cargar y mostrar el GIF en lugar del rectángulo
+    gif_path = "GUI/Assets/Home/logo_tese_animado.gif"
+    gif_image = Image.open(gif_path)
 
-    # Iniciar el bucle principal para la nueva ventana
-    new_window.mainloop()
+    # Extraer los frames del GIF y almacenarlos en una lista
+    frames = []
+    try:
+        while True:
+            frame = ImageTk.PhotoImage(gif_image.copy())
+            frames.append(frame)
+            gif_image.seek(len(frames))  # Avanzar al siguiente frame
+    except EOFError:
+        pass  # Termina cuando ya no hay más frames
 
+        # Definir la animación del GIF
+        def update_gif(index):
+            global gif_animation_id
+            if gif_running:  # Solo continuar si la animación debe seguir corriendo
+                canvas.itemconfig(gif_item, image=frames[index])  # Actualizar el frame del GIF en el canvas
+                # Programar la actualización del siguiente frame después de 100 ms
+                gif_animation_id = window.after(100, update_gif, (index + 1) % len(frames))
 
-# Función que se ejecuta cuando se hace clic en el botón lecciones
-def button_lessons_click(window):
-    stop_gif_animation(window)  # Detener la animación del GIF antes de cambiar de ventana
+        # Crear la imagen del GIF en el canvas, ubicada en la posición especificada
+        gif_item = canvas.create_image(647.0, 104.5, image=frames[0])
+        gif_running = True  # Iniciar la animación del GIF
+        update_gif(0)  # Iniciar la actualización de los frames
 
-    # Importar la función necesaria para crear la ventana "dictionary"
-    from GUI.Lessons.lessons_ui import create_lessons_window
-
-    # Destruir la ventana actual (Home)
-    window.destroy()
-
-    # Crear una nueva ventana para "dictionary"
-    new_window = Tk()
-    center_window(new_window)
-    button_alphabet, button_vocabulary, button_go_back, images = create_lessons_window(new_window)
-
-    # Iniciar el bucle principal para la nueva ventana
-    new_window.mainloop()
-
-
-# Función que se ejecuta cuando se hace clic en el botón información
-def button_information_click(window):
-    stop_gif_animation(window)  # Detener la animación del GIF antes de cambiar de ventana
-
-    # Importar la función necesaria para crear la ventana "information"
-    from GUI.Information.information_ui import create_information_window
-
-    # Destruir la ventana actual (Home)
-    window.destroy()
-
-    # Crear una nueva ventana para "information"
-    new_window = Tk()
-    center_window(new_window)
-    button_go_back, images = create_information_window(new_window)
-
-    # Iniciar el bucle principal para la nueva ventana
-    new_window.mainloop()
-
-
-# Configurar la lógica de los botones de la ventana "home"
-def setup_home_window_logic(window, button_dictionary, button_lessons, button_information):
-    # Asignar la función correspondiente a cada botón
-    button_dictionary.config(command=lambda: button_dictionary_click(window))
-    button_lessons.config(command=lambda: button_lessons_click(window))
-    button_information.config(command=lambda: button_information_click(window))
+# Función para detener la animación del GIF
+def stop_gif_animation(window):
+    global gif_running, gif_animation_id
+    gif_running = False  # Detener la animación del GIF
+    if gif_animation_id is not None:
+        try:
+            # Cancelar cualquier tarea `after` activa
+            window.after_cancel(gif_animation_id)
+        except ValueError:
+            pass  # Si ya fue cancelada o no es válida, se ignora el error

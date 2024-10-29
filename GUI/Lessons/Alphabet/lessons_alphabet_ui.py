@@ -1,9 +1,9 @@
-from tkinter import Canvas, Button, PhotoImage
+from tkinter import Button, PhotoImage
 from pathlib import Path
 
 # Rutas
 from Utils.paths import assets_lessons_alphabet_path
-from Utils.gui_utils import setup_window, create_common_canvas, BUTTON_COMMON_CONFIG
+from GUI.gui_utils import setup_window, create_common_canvas, BUTTON_COMMON_CONFIG
 
 def relative_to_assets(path: str) -> Path:
     return assets_lessons_alphabet_path / Path(path)
@@ -47,11 +47,11 @@ def create_lessons_alphabet_window(window):
     canvas.create_image(303.0, 384.0, image=image_image_2)
 
     # Lógica del botón "Regresar"
-    from Utils.gui_utils import go_lessons_window
+    from GUI.gui_utils import go_lessons_window
     button_go_back.config(command=lambda: go_lessons_window(window))
 
     # Lógica del botón "Inicio"
-    from Utils.gui_utils import go_home_window
+    from GUI.gui_utils import go_home_window
     button_home.config(command=lambda: go_home_window(window))
 
     window.resizable(False, False)

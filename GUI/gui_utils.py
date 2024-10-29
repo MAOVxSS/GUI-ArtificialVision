@@ -1,5 +1,9 @@
 # ARCHIVO PARA ESTILOS Y FUNCIONES
 from tkinter import Canvas, Tk
+import json
+
+# Rutas
+DATA_FILE_PATH = "GUI/Assets/Letters_Information/letters_data.json"
 
 # Configuración de las ventanas principales
 WINDOW_CONFIG = {
@@ -54,13 +58,13 @@ def center_window(window, width=1366, height=768):
     # Configurar la geometría de la ventana
     window.geometry(f"{width}x{height}+{x_position}+{y_position}")
 
+
 # FUNCIONES PARA IR A LAS VENTANAS ****************************************************************************
 
 # Función para generar la ventana "Inicio"
 def go_home_window(window):
     # Funciones para crear la ventana
     from GUI.Home.home_ui import create_home_window
-    from GUI.Home.home_logic import setup_home_window_logic
 
     # Destruir la ventana actual (Information)
     window.destroy()
@@ -72,11 +76,9 @@ def go_home_window(window):
     # Crear la interfaz "home"
     button_dictionary, button_information, button_lessons, images = create_home_window(new_window)
 
-    # Configurar la lógica de la ventana "home"
-    setup_home_window_logic(new_window, button_dictionary, button_lessons, button_information)
-
     # Iniciar el loop principal para la nueva ventana
     new_window.mainloop()
+
 
 # Función para generar la ventana "Diccionario"
 def go_dictionary_window(window):
@@ -94,6 +96,7 @@ def go_dictionary_window(window):
     # Iniciar el bucle principal para la nueva ventana
     new_window.mainloop()
 
+
 # Función para generar la ventana "Lecciones"
 def go_lessons_window(window):
     # Importar la función necesaria para crear la ventana "dictionary"
@@ -109,6 +112,7 @@ def go_lessons_window(window):
 
     # Iniciar el bucle principal para la nueva ventana
     new_window.mainloop()
+
 
 # Función para generar la ventana "Alfabeto"
 def go_dictionary_alphabet_window(window):
@@ -128,6 +132,7 @@ def go_dictionary_alphabet_window(window):
     # Iniciar el bucle principal para la nueva ventana
     new_window.mainloop()
 
+
 # Función para generar la ventana "Alfabeto"
 def go_lessons_alphabet_window(window):
     from GUI.Lessons.Alphabet.lessons_alphabet_ui import create_lessons_alphabet_window
@@ -140,6 +145,57 @@ def go_lessons_alphabet_window(window):
     center_window(new_window)
     (button_image_home, button_image_go_back, button_image_random_lesson,
      button_image_complete_lesson, images) = create_lessons_alphabet_window(new_window)
+
+    # Iniciar el bucle principal para la nueva ventana
+    new_window.mainloop()
+
+
+# Función para generar la ventana "Inicio"
+def go_camera_window(window, actual_letter):
+    from GUI.Camera.camera_logic import update_icon_letter
+    # Se guarda la letra actual para mantenerla en las ventanas
+    actual_letter = actual_letter
+
+    # Cargar el archivo JSON
+    with open(DATA_FILE_PATH, "r", encoding="utf-8") as file:
+        data = json.load(file)
+
+    if actual_letter in data:
+        letter_data = data[actual_letter]
+
+        # Funciones para crear la ventana
+        from GUI.Camera.camera_ui import create_camera_window
+
+        # Destruir la ventana actual (Information)
+        window.destroy()
+
+        # Crear una nueva ventana para Home
+        new_window = Tk()
+        center_window(new_window)
+
+        # Crear la interfaz "home"
+        button_tip, button_go_back, button_go_home, images = create_camera_window(new_window, actual_letter)
+
+        update_icon_letter(new_window, letter_data["icon_path"])
+
+        # Iniciar el loop principal para la nueva ventana
+        new_window.mainloop()
+    else:
+        print(f"Letra '{actual_letter}' no encontrada en el archivo JSON")
+
+
+# Función que se ejecuta cuando se hace clic en el botón información
+def go_information_window(window):
+    # Importar la función necesaria para crear la ventana "information"
+    from GUI.Information.information_ui import create_information_window
+
+    # Destruir la ventana actual (Home)
+    window.destroy()
+
+    # Crear una nueva ventana para "information"
+    new_window = Tk()
+    center_window(new_window)
+    button_go_back, images = create_information_window(new_window)
 
     # Iniciar el bucle principal para la nueva ventana
     new_window.mainloop()

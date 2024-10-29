@@ -1,0 +1,19 @@
+{
+  "Static": {
+    "Information": [
+      "Para esta seña sigue estas consideraciones: \n",
+      "1. Cuando se muestre el video, asegúrate de mantener solo una mano dentro del recuadro.\n",
+      "2. Al ejecutar la seña, no acerques demasiado la mano a la cámara ni la alejes demasiado; colócala en una posición donde sea claramente visible.\n",
+      "3. El resultado de la seña se mostrará en la imagen debajo de la cámara.\n"
+    ]
+  },
+  "Dynamic": {
+    "Information": [
+      "Para esta seña sigue estas consideraciones: \n",
+      "1. Cuando se muestre el video, asegúrate de mantener solo una mano dentro del recuadro.\n",
+      "2. Al ejecutar la seña, no acerques demasiado la mano a la cámara ni la alejes demasiado; colócala en una posición donde sea claramente visible.\n",
+      "3. Una vez que comiences la seña, al terminar asegúrate de retirar la mano de la cámara.\n",
+      "4. El resultado de la seña se mostrará en la imagen debajo de la cámara."
+    ]
+  }
+}
