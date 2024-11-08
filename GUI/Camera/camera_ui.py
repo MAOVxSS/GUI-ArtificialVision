@@ -13,12 +13,17 @@ def relative_to_assets_camera(path: str) -> Path:
 
 
 # Función para crear la ventana de la cámara
-def create_camera_window(window, actual_letter):
+def create_camera_window(window, actual_letter, letter_type):
     # Importar funciones para iniciar y detener el reconocimiento de señas
-    from GUI.Camera.camera_logic import start_static_sign_recognition, stop_video_stream
+    from GUI.Camera.camera_artificial_vision_logic import (start_static_sign_recognition,
+                                                           start_dynamic_sign_recognition,
+                                                           stop_video_stream)
 
     # Se guarda la letra actual para mantenerla en las ventanas
     actual_letter = actual_letter
+
+    # Se guarda el tipo de letra actual (estático o dinámico)
+    letter_type = letter_type
 
     # Configurar la ventana principal con un color de fondo
     setup_window(window, background_color="#369FD6")
@@ -37,7 +42,13 @@ def create_camera_window(window, actual_letter):
     video_label.place(x=533.0, y=41.0, width=784.0, height=576.0)  # Posición y tamaño del rectángulo
 
     # Iniciar la captura de video con reconocimiento de señas (mostrando en `video_label`)
-    start_static_sign_recognition(video_label, window, actual_letter)
+    if letter_type == 'Estatico':
+        print("Reconocimiento estatico")
+        start_static_sign_recognition(video_label, window, actual_letter)
+    elif letter_type == 'Dinamico':
+        print("Reconocimiento dinamico")
+
+        start_dynamic_sign_recognition(video_label, window, actual_letter)
 
     # Crear los botones de la interfaz
     # Botón para mostrar un consejo o tip

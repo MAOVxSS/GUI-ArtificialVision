@@ -133,7 +133,7 @@ def go_dictionary_alphabet_window(window):
     new_window.mainloop()
 
 
-# Función para generar la ventana "Alfabeto"
+# Función para generar la ventana "Lecciónes Alfabeto"
 def go_lessons_alphabet_window(window):
     from GUI.Lessons.Alphabet.lessons_alphabet_ui import create_lessons_alphabet_window
 
@@ -150,7 +150,7 @@ def go_lessons_alphabet_window(window):
     new_window.mainloop()
 
 
-# Función para generar la ventana "Inicio"
+# Función para generar la ventana "Camera"
 def go_camera_window(window, actual_letter):
     from GUI.Camera.camera_logic import update_icon_letter
     # Se guarda la letra actual para mantenerla en las ventanas
@@ -174,7 +174,8 @@ def go_camera_window(window, actual_letter):
         center_window(new_window)
 
         # Crear la interfaz "home"
-        button_tip, button_go_back, button_go_home, images = create_camera_window(new_window, actual_letter)
+        button_tip, button_go_back, button_go_home, images = create_camera_window(new_window, actual_letter,
+                                                                                  letter_data["movement"])
 
         update_icon_letter(new_window, letter_data["icon_path"])
 
@@ -198,4 +199,24 @@ def go_information_window(window):
     button_go_back, images = create_information_window(new_window)
 
     # Iniciar el bucle principal para la nueva ventana
+    new_window.mainloop()
+
+
+# Función para generar la ventana "Lección Completa Alfabeto"
+def go_complete_lesson_alphabet(window):
+    # Funciones para crear la ventana
+    from GUI.Lessons.Alphabet.Alphabet_Complete_Lesson.alphabet_complete_lesson_ui import (
+        create_complete_lesson_alphabet_window)
+
+    # Destruir la ventana actual (Information)
+    window.destroy()
+
+    # Crear una nueva ventana para Home
+    new_window = Tk()
+    center_window(new_window)
+
+    # Crear la interfaz "home"
+    button_tip, button_go_back, button_go_home, images = create_complete_lesson_alphabet_window(new_window)
+
+    # Iniciar el loop principal para la nueva ventana
     new_window.mainloop()

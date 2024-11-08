@@ -46,13 +46,17 @@ def create_lessons_alphabet_window(window):
     images["image_2"] = image_image_2
     canvas.create_image(303.0, 384.0, image=image_image_2)
 
+    # Importar funciones necesarias para la navegación entre ventanas
+    from GUI.gui_utils import go_lessons_window, go_home_window, go_complete_lesson_alphabet
+
     # Lógica del botón "Regresar"
-    from GUI.gui_utils import go_lessons_window
     button_go_back.config(command=lambda: go_lessons_window(window))
 
     # Lógica del botón "Inicio"
-    from GUI.gui_utils import go_home_window
     button_home.config(command=lambda: go_home_window(window))
+
+    # Lógica del botón "Lección completa"
+    button_complete_lesson.config(command=lambda: go_complete_lesson_alphabet(window))
 
     window.resizable(False, False)
 
