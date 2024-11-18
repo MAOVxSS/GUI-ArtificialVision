@@ -118,6 +118,6 @@ def capture_samples(path, margin_frame=2, min_cant_frames=5, delay_frames=3):
 
 # Configuración inicial para especificar la palabra a capturar y la ubicación de guardado
 if __name__ == "__main__":
-    word_name = "gracias"  # Cambiar a la palabra o frase que se desea capturar
+    word_name = "cuidate"  # Cambiar a la palabra o frase que se desea capturar
     word_path = os.path.join(phrases_model_frames_data_path, word_name)  # Ruta de guardado
     capture_samples(word_path)  # Iniciar captura de muestras

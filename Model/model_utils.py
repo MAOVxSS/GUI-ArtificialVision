@@ -75,8 +75,6 @@ def analyze_h5_keypoints(h5_path):
     print("[INFO] Análisis completado. El archivo parece estar listo para el entrenamiento.")
 
 
-
-
 def plot_history(model):
     """
     Genera gráficos del historial de entrenamiento de un modelo.
@@ -185,34 +183,6 @@ def draw_keypoints(image, results):
         DrawingSpec(color=(245, 66, 230), thickness=2, circle_radius=2),
     )
 
-def get_word_ids(path):
-    with open(path, 'r') as json_file:
-        data = json.load(json_file)
-        return data.get('word_ids')
-
-def mediapipe_detection(image, model):
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    image.flags.writeable = False
-    results = model.process(image)
-    return results
-
-def create_folder(path):
-    '''
-    ### CREAR CARPETA SI NO EXISTE
-    Si ya existe, no hace nada.
-    '''
-    if not os.path.exists(path):
-        os.makedirs(path)
-
-def there_hand(results: NamedTuple) -> bool:
-    return results.left_hand_landmarks or results.right_hand_landmarks
-
-def extract_keypoints(results):
-    pose = np.array([[res.x, res.y, res.z, res.visibility] for res in results.pose_landmarks.landmark]).flatten() if results.pose_landmarks else np.zeros(33*4)
-    face = np.array([[res.x, res.y, res.z] for res in results.face_landmarks.landmark]).flatten() if results.face_landmarks else np.zeros(468*3)
-    lh = np.array([[res.x, res.y, res.z] for res in results.left_hand_landmarks.landmark]).flatten() if results.left_hand_landmarks else np.zeros(21*3)
-    rh = np.array([[res.x, res.y, res.z] for res in results.right_hand_landmarks.landmark]).flatten() if results.right_hand_landmarks else np.zeros(21*3)
-    return np.concatenate([pose, face, lh, rh])
 
 words_text = {
     "adios": "ADIÓS",

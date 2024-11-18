@@ -91,10 +91,10 @@ if __name__ == "__main__":
     Procesa todas las palabras o un conjunto específico y genera los keypoints.
     """
     # Generar keypoints para todas las palabras
-    word_ids = [word for word in os.listdir(phrases_model_frames_data_path)]
+    # word_ids = [word for word in os.listdir(phrases_model_frames_data_path)]
 
     # Alternativamente, generar keypoints solo para palabras seleccionadas
-    # word_ids = ["bien", ...]
+    word_ids = ["adios", "cuidate"]
 
     # Procesa cada palabra en la lista
     for word_id in word_ids:

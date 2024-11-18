@@ -161,7 +161,11 @@ def process_directory(word_directory, target_frame_count=15):
 
 if __name__ == "__main__":
     # Lista todas las palabras en el directorio de acciones de frames
-    word_ids = [word for word in os.listdir(phrases_model_frames_data_path)]
+    # word_ids = [word for word in os.listdir(phrases_model_frames_data_path)]
+
+    # Alternativamente, normalizar solo las palabras seleccionadas
+    # word_ids = ["bien", ...]
+    word_ids = ["adios", "cuidate"]
 
     # Frames máximos para cada acción
     max_actions_frames = 15
