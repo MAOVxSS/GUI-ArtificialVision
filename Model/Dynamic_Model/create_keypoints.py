@@ -5,7 +5,7 @@ import cv2
 from mediapipe.python.solutions.hands import Hands
 
 # Rutas
-from Utils.paths import dynamic_model_unconverted_data_path, dynamic_model_converted_data_path
+from Utils.paths import dynamic_model_frames_data_path, dynamic_model_converted_data_path
 
 # Funciones
 from Model.model_utils import mediapipe_detection
@@ -48,8 +48,8 @@ def process_and_save_keypoints(frames_path, save_path):
 
 if __name__ == "__main__":
     # Generar los keypoints de todas las palabras
-    for word_name in os.listdir(dynamic_model_unconverted_data_path):
-        word_path = os.path.join(dynamic_model_unconverted_data_path, word_name)
+    for word_name in os.listdir(dynamic_model_frames_data_path):
+        word_path = os.path.join(dynamic_model_frames_data_path, word_name)
         hdf_path = os.path.join(dynamic_model_converted_data_path, f"{word_name}.h5")
         print(f'Creando keypoints de "{word_name}"...')
         process_and_save_keypoints(word_path, hdf_path)

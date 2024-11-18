@@ -6,7 +6,7 @@ from mediapipe.python.solutions.hands import HAND_CONNECTIONS
 from mediapipe.python.solutions.drawing_utils import draw_landmarks, DrawingSpec
 
 # Rutas y variables
-from Utils.paths import dynamic_model_unconverted_data_path
+from Utils.paths import dynamic_model_frames_data_path
 from Utils.config import id_camera
 
 # Función con la lógica para el guardado de frames de cada acción
@@ -99,6 +99,6 @@ def capture_samples(path, margin_frame=2, min_cant_frames=5):
 
 if __name__ == "__main__":
     word_name = "z"  # Cambiar a la letra que se quiera guardar
-    word_path = os.path.join(dynamic_model_unconverted_data_path, word_name)  # Ruta de guardado de los frames
+    word_path = os.path.join(dynamic_model_frames_data_path, word_name)  # Ruta de guardado de los frames
     print(f"Guardando frames en: {word_path}")
     capture_samples(word_path)

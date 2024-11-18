@@ -220,3 +220,22 @@ def go_complete_lesson_alphabet(window):
 
     # Iniciar el loop principal para la nueva ventana
     new_window.mainloop()
+
+# Función para generar la ventana "Lección Al Azar del Alfabeto"
+def go_mix_lesson_alphabet(window):
+    # Funciones para crear la ventana
+    from GUI.Lessons.Alphabet.Alphabet_Mix_Lesson.alphabet_mix_lesson_ui import (
+        create_alphabet_mix_lesson_window)
+
+    # Destruir la ventana actual (Information)
+    window.destroy()
+
+    # Crear una nueva ventana para Home
+    new_window = Tk()
+    center_window(new_window)
+
+    # Crear la interfaz "home"
+    button_tip, button_go_back, button_go_home, images = create_alphabet_mix_lesson_window(new_window)
+
+    # Iniciar el loop principal para la nueva ventana
+    new_window.mainloop()
