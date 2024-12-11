@@ -1,20 +1,34 @@
 import tensorflow as tf
 import os
+from Utils.paths import phrases_model_keras_path
 
-# Rutas y variables
-from Utils.paths import generated_models_path
-from Utils.config import static_model_name
+# Ruta del modelo Keras
+keras_model_path = os.path.join(phrases_model_keras_path, "phrases_model.keras")
 
-# Cargar el modelo .keras
-model_path = os.path.join(generated_models_path, static_model_name)
-model = tf.keras.models.load_model(model_path)
+# Ruta para guardar el modelo TFLite
+tflite_model_path = os.path.join(phrases_model_keras_path, "phrases_model.tflite")
 
-# Convertir el modelo a formato TensorFlow Lite
+# Cargar el modelo Keras
+model = tf.keras.models.load_model(keras_model_path)
+
+# Configurar el convertidor TFLite
 converter = tf.lite.TFLiteConverter.from_keras_model(model)
+
+# Habilitar las operaciones de TensorFlow seleccionadas
+converter.target_spec.supported_ops = [
+    tf.lite.OpsSet.TFLITE_BUILTINS,  # Operaciones estándar de TFLite
+    tf.lite.OpsSet.SELECT_TF_OPS     # Operaciones seleccionadas de TensorFlow
+]
+
+# Configurar dimensiones de entrada estáticas
+converter.experimental_new_converter = True  # Usar el convertidor TFLite más reciente
+converter._experimental_lower_tensor_list_ops = False  # Evitar conflictos con TensorListReserve
+
+# Realizar la conversión
 tflite_model = converter.convert()
 
-# Guardar el modelo convertido a un archivo .tflite
-with open('static_keypoint_model.tflite', 'wb') as f:
+# Guardar el modelo convertido
+with open(tflite_model_path, 'wb') as f:
     f.write(tflite_model)
 
-print("Modelo convertido a TensorFlow Lite y guardado como modelo.tflite")
+print(f"[INFO] Modelo convertido y guardado en: {tflite_model_path}")

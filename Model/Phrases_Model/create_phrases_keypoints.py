@@ -3,7 +3,8 @@ import cv2
 import numpy as np
 import pandas as pd
 from mediapipe.python.solutions.holistic import Holistic
-from Utils.paths import phrases_model_frames_data_path, phrases_model_converted_data_path
+from Utils.paths import (phrases_model_frames_data_path, phrases_model_converted_data_path,
+                         phrases_model_test_frames_data_path, phrases_model_test_converted_data_path)
 from Model.model_utils import analyze_h5_keypoints
 
 def create_keypoints(word_id, words_path, h5_path):
@@ -90,13 +91,27 @@ if __name__ == "__main__":
     """
     Procesa todas las palabras o un conjunto específico y genera los keypoints.
     """
-    # Generar keypoints para todas las palabras
+
+    # Generar keypoints para todas las palabras normales
     # word_ids = [word for word in os.listdir(phrases_model_frames_data_path)]
 
+    # Generar keypoints para todas las palabras de pruebas
+    # word_ids = [word for word in os.listdir(phrases_model_test_frames_data_path)]
+
     # Alternativamente, generar keypoints solo para palabras seleccionadas
-    word_ids = ["adios", "cuidate"]
+    word_ids = ["k_izq", "k_der"]
 
     # Procesa cada palabra en la lista
     for word_id in word_ids:
+
+        #Guardar archivos normales
         h5_path = os.path.join(phrases_model_converted_data_path, f"{word_id}.h5")
+
+        # Guardar archivos de prueba
+        # h5_path = os.path.join(phrases_model_test_converted_data_path, f"{word_id}.h5")
+
+        # Guardar para archivos normales
         create_keypoints(word_id, phrases_model_frames_data_path, h5_path)
+
+        # Guardar para archivos de prueba
+        # create_keypoints(word_id, phrases_model_test_frames_data_path, h5_path)

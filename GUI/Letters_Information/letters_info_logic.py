@@ -6,8 +6,7 @@ from GUI.gui_utils import center_window
 from pathlib import Path
 
 # Ruta del archivo JSON que contiene la información sobre las letras
-DATA_JSON_LETTERS_INFORMATION_PATH = "GUI/Assets/Letters_Information/letters_data.json"
-from Utils.paths import assets_letters_information_path
+from Utils.paths import assets_json_letters_info_path, assets_letters_information_path
 
 
 # Función para generar la ruta completa hacia los archivos de recursos (JSON e imágenes)
@@ -73,7 +72,7 @@ def show_letter_gif(window, gif_path, canvas):
 # Función que se llama al hacer clic en un botón de una letra
 def button_letter_click(window, letter):
     # Cargar el archivo JSON que contiene la información de las letras
-    with open(DATA_JSON_LETTERS_INFORMATION_PATH, "r", encoding="utf-8") as file:
+    with open(assets_json_letters_info_path, "r", encoding="utf-8") as file:
         data = json.load(file)
 
     # Verificar si la letra existe en el archivo JSON

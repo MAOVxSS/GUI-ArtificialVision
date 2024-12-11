@@ -1,9 +1,11 @@
 # ARCHIVO PARA ESTILOS Y FUNCIONES
 from tkinter import Canvas, Tk
 import json
+from tkinter import Toplevel, PhotoImage, Label
+from GUI.Camera.Camera_Letters.camera_letters_model_logic import relative_to_assets_camera
 
-# Rutas
-DATA_FILE_PATH = "GUI/Assets/Letters_Information/letters_data.json"
+# Ruta para la información de las letras y frases
+from Utils.paths import assets_json_letters_info_path, assets_json_phrases_info_path
 
 # Configuración de las ventanas principales
 WINDOW_CONFIG = {
@@ -116,7 +118,7 @@ def go_lessons_window(window):
 
 # Función para generar la ventana "Alfabeto"
 def go_dictionary_alphabet_window(window):
-    from GUI.Dictionary.Alphabet.dictionary_alphabet_ui import create_alphabet_window
+    from GUI.Dictionary.Alphabet.dictionary_alphabet_ui import create_dictionary_alphabet_window
 
     # Destruir la ventana actual (Home)
     window.destroy()
@@ -127,7 +129,25 @@ def go_dictionary_alphabet_window(window):
     (button_a, button_b, button_c, button_d, button_e, button_f, button_g, button_h,
      button_i, button_j, button_k, button_l, button_m, button_n, button_nn, button_o, button_p,
      button_q, button_r, button_s, button_t, button_u, button_v, button_w, button_x,
-     button_y, button_z, button_go_back, button_go_home, images) = create_alphabet_window(new_window)
+     button_y, button_z, button_go_back, button_go_home, images) = create_dictionary_alphabet_window(new_window)
+
+    # Iniciar el bucle principal para la nueva ventana
+    new_window.mainloop()
+
+
+# Función para generar la ventana "Frases comunes"
+def go_dictionary_phrases_window(window):
+    from GUI.Dictionary.Phrases.dictionary_phrases_ui import create_dictionary_phrases_window
+
+    # Destruir la ventana actual (Home)
+    window.destroy()
+
+    # Crear una nueva ventana para "dictionary"
+    new_window = Tk()
+    center_window(new_window)
+    (button_phrase_hello, button_phrase_bye, button_phrase_how_are_you, button_phrase_take_care,
+     button_phrase_neutral, button_phrase_thank_you, button_phrase_please, button_phrase_you_are_welcome,
+     button_go_back, button_go_home, images) = create_dictionary_phrases_window(new_window)
 
     # Iniciar el bucle principal para la nueva ventana
     new_window.mainloop()
@@ -135,7 +155,7 @@ def go_dictionary_alphabet_window(window):
 
 # Función para generar la ventana "Lecciónes Alfabeto"
 def go_lessons_alphabet_window(window):
-    from GUI.Lessons.Alphabet.lessons_alphabet_ui import create_lessons_alphabet_window
+    from GUI.Lessons.Alphabet.lessons_alphabet_ui import create_alphabet_lessons_window
 
     # Destruir la ventana actual (Home)
     window.destroy()
@@ -144,27 +164,44 @@ def go_lessons_alphabet_window(window):
     new_window = Tk()
     center_window(new_window)
     (button_image_home, button_image_go_back, button_image_random_lesson,
-     button_image_complete_lesson, images) = create_lessons_alphabet_window(new_window)
+     button_image_complete_lesson, images) = create_alphabet_lessons_window(new_window)
 
     # Iniciar el bucle principal para la nueva ventana
     new_window.mainloop()
 
 
-# Función para generar la ventana "Camera"
-def go_camera_window(window, actual_letter):
-    from GUI.Camera.camera_logic import update_icon_letter
+# Función para generar la ventana "Lecciónes Alfabeto"
+def go_phrases_lessons_window(window):
+    from GUI.Lessons.Phrases.phrases_lessons_ui import create_phrases_lessons_window
+
+    # Destruir la ventana actual (Home)
+    window.destroy()
+
+    # Crear una nueva ventana para "dictionary"
+    new_window = Tk()
+    center_window(new_window)
+    (button_image_home, button_image_go_back, button_image_random_lesson,
+     button_image_complete_lesson, images) = create_phrases_lessons_window(new_window)
+
+    # Iniciar el bucle principal para la nueva ventana
+    new_window.mainloop()
+
+
+# Función para generar la ventana Camara en su módulo de letras
+def go_camera_letters_window(window, actual_letter):
+    from GUI.Camera.Camera_Letters.camera_letters_logic import update_icon_letter
     # Se guarda la letra actual para mantenerla en las ventanas
     actual_letter = actual_letter
 
     # Cargar el archivo JSON
-    with open(DATA_FILE_PATH, "r", encoding="utf-8") as file:
+    with open(assets_json_letters_info_path, "r", encoding="utf-8") as file:
         data = json.load(file)
 
     if actual_letter in data:
         letter_data = data[actual_letter]
 
         # Funciones para crear la ventana
-        from GUI.Camera.camera_ui import create_camera_window
+        from GUI.Camera.Camera_Letters.camera_letters_ui import create_camera_letters_window
 
         # Destruir la ventana actual (Information)
         window.destroy()
@@ -174,8 +211,8 @@ def go_camera_window(window, actual_letter):
         center_window(new_window)
 
         # Crear la interfaz "home"
-        button_tip, button_go_back, button_go_home, images = create_camera_window(new_window, actual_letter,
-                                                                                  letter_data["movement"])
+        button_tip, button_go_back, button_go_home, images = create_camera_letters_window(new_window, actual_letter,
+                                                                                          letter_data["movement"])
 
         update_icon_letter(new_window, letter_data["icon_path"])
 
@@ -183,6 +220,42 @@ def go_camera_window(window, actual_letter):
         new_window.mainloop()
     else:
         print(f"Letra '{actual_letter}' no encontrada en el archivo JSON")
+
+
+# Función para generar la ventana Camara en su módulo de letras
+def go_camera_phrases_window(window, actual_phrase):
+    from GUI.Camera.Camera_Phrases.camera_phrases_logic import update_icon_phrase
+    # Se guarda la letra actual para mantenerla en las ventanas
+    actual_phrase = actual_phrase
+
+    # Cargar el archivo JSON
+    with open(assets_json_phrases_info_path, "r", encoding="utf-8") as file:
+        data = json.load(file)
+
+    if actual_phrase in data:
+        phrase_data = data[actual_phrase]
+
+        # Funciones para crear la ventana
+        from GUI.Camera.Camera_Phrases.camera_phrases_ui import create_camera_phrases_window
+
+        # Destruir la ventana actual (Information)
+        window.destroy()
+
+        # Crear una nueva ventana para Home
+        new_window = Tk()
+        center_window(new_window)
+
+        # Crear la interfaz "home"
+        button_tip, button_go_back, button_go_home, images = create_camera_phrases_window(new_window,
+                                                                                          phrase_data[
+                                                                                              "complete_phrase"])
+
+        update_icon_phrase(new_window, phrase_data["icon_path"])
+
+        # Iniciar el loop principal para la nueva ventana
+        new_window.mainloop()
+    else:
+        print(f"Letra '{actual_phrase}' no encontrada en el archivo JSON")
 
 
 # Función que se ejecuta cuando se hace clic en el botón información
@@ -221,6 +294,7 @@ def go_complete_lesson_alphabet(window):
     # Iniciar el loop principal para la nueva ventana
     new_window.mainloop()
 
+
 # Función para generar la ventana "Lección Al Azar del Alfabeto"
 def go_mix_lesson_alphabet(window):
     # Funciones para crear la ventana
@@ -239,3 +313,68 @@ def go_mix_lesson_alphabet(window):
 
     # Iniciar el loop principal para la nueva ventana
     new_window.mainloop()
+
+# Función para generar la ventana "Lección Al Azar del Alfabeto"
+def go_complete_lesson_phrases(window):
+    # Funciones para crear la ventana
+    from GUI.Lessons.Phrases.Phrases_Complete_Lesson.phrases_complete_lesson_ui import create_complete_lesson_phrases_window
+
+    # Destruir la ventana actual (Information)
+    window.destroy()
+
+    # Crear una nueva ventana para Home
+    new_window = Tk()
+    center_window(new_window)
+
+    # Crear la interfaz "home"
+    button_tip, button_go_back, button_go_home, images = create_complete_lesson_phrases_window(new_window)
+
+    # Iniciar el loop principal para la nueva ventana
+    new_window.mainloop()
+
+# Función para generar la ventana "Lección Al Azar del Alfabeto"
+def go_mix_lesson_phrases(window):
+    # Funciones para crear la ventana
+    from GUI.Lessons.Phrases.Phrases_Mix_Lesson.phrases_mix_lesson_ui import create_mix_lesson_phrases_window
+
+    # Destruir la ventana actual (Information)
+    window.destroy()
+
+    # Crear una nueva ventana para Home
+    new_window = Tk()
+    center_window(new_window)
+
+    # Crear la interfaz "home"
+    button_tip, button_go_back, button_go_home, images = create_mix_lesson_phrases_window(new_window)
+
+    # Iniciar el loop principal para la nueva ventana
+    new_window.mainloop()
+
+
+def show_completion_popup(window, progress_label, restart_lesson_callback):
+    """Muestra una ventana emergente de éxito al completar la lección.
+
+    Argumentos:
+    window -- ventana principal de la aplicación.
+    progress_label -- etiqueta de progreso de la lección.
+    restart_lesson_callback -- función a ejecutar para reiniciar la lección.
+    """
+    # Crear la ventana emergente centrada en la pantalla
+    popup = Toplevel(window)
+    popup.title("¡Completado!")
+    window_width, window_height = 665, 665
+    screen_width, screen_height = popup.winfo_screenwidth(), popup.winfo_screenheight()
+    x_position, y_position = (screen_width // 2) - (window_width // 2), (screen_height // 2) - (window_height // 2)
+    popup.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
+    popup.resizable(False, False)
+
+    # Cargar la imagen de éxito y asignarla a la ventana emergente
+    completion_image = PhotoImage(file=relative_to_assets_camera("mensaje_exito.png"))
+    label = Label(popup, image=completion_image)
+    label.pack(padx=10, pady=10)
+    popup.completion_image = completion_image  # Mantener la referencia a la imagen para evitar recolección de basura
+
+    # Configurar el cierre automático de la ventana emergente después de 3 segundos y reiniciar la lección
+    popup.after(3000, lambda: [popup.destroy(), restart_lesson_callback()])
+    popup.transient(window)  # Establecer la ventana emergente como hija de la ventana principal
+    popup.grab_set()  # Bloquear interacción con la ventana principal mientras la emergente esté activa

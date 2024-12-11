@@ -9,7 +9,7 @@ from GUI.gui_utils import setup_window, create_common_canvas, BUTTON_COMMON_CONF
 def relative_to_assets(path: str) -> Path:
     return assets_lessons_alphabet_path / Path(path)
 
-def create_lessons_alphabet_window(window):
+def create_alphabet_lessons_window(window):
     # Configurar la ventana con los estilos comunes
     setup_window(window, background_color="#379FD7")
 

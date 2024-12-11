@@ -1,0 +1,102 @@
+{
+  "HOLA": {
+    "type": "Frase",
+    "movement": "Dinamico",
+    "complete_phrase": "HOLA",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Levanta una mano con la palma abierta y orientada hacia adelante, como si estuvieras saludando.\n",
+      "2. Extiende el dedo pulgar.\n",
+      "3. Lleva la mano hacia la frente, tocándola ligeramente con la punta de los dedos.\n",
+      "4. Aleja la mano de la cabeza en un movimiento suave hacia adelante, como si estuvieras saludando a alguien"
+    ],
+    "phrase_path": "GUI/Assets/Phrases_Information/frase_hola.gif",
+    "icon_path": "GUI/Assets/Dictionary/Phrases/frase_hola.png"
+  },
+  "ADIOS": {
+    "type": "Frase",
+    "movement": "Dinamico",
+    "complete_phrase": "ADIOS",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Levanta tu mano con los dedos extendidos y ligeramente separados, y la palma orientada hacia adelante.\n",
+      "2. Mueve la mano de izquierda a derecha, realizando un gesto de saludo."
+    ],
+    "phrase_path": "GUI/Assets/Phrases_Information/frase_adios.gif",
+    "icon_path": "GUI/Assets/Dictionary/Phrases/frase_adios.png"
+  },
+  "COMO_ESTAS": {
+    "type": "Frase",
+    "movement": "Dinamico",
+    "complete_phrase": "COMO_ESTAS",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Levanta las dos manos frente a ti, con las palmas mirando hacia abajo y pulgares extendidos.\n",
+      "2. Mueve ambas manos cerrándolas como puños y levantando los pulgares hacia arriba."
+    ],
+    "phrase_path": "GUI/Assets/Phrases_Information/frase_como_estas.gif",
+    "icon_path": "GUI/Assets/Dictionary/Phrases/frase_como_estas.png"
+  },
+  "CUIDATE": {
+    "type": "Frase",
+    "movement": "Dinamico",
+    "complete_phrase": "CUIDATE",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Levanta ambas manos y coloca los dedos de cada mano en forma de la letra 'C',\n",
+      "2. Manteniendo la forma lleva tus manos al pecho y hacia adelante"
+    ],
+    "phrase_path": "GUI/Assets/Phrases_Information/frase_cuidate.gif",
+    "icon_path": "GUI/Assets/Dictionary/Phrases/frase_cuidate.png"
+  },
+  "DE_NADA": {
+    "type": "Frase",
+    "movement": "Dinamico",
+    "complete_phrase": "DE_NADA",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Levanta una mano cerrando el puño y levantando el dedo pulgar.\n",
+      "2. Lleva la mano hacia el mentón.\n",
+      "3. Haz el gesto de 'rascar' el mentón con el dedo pulgar"
+    ],
+    "phrase_path": "GUI/Assets/Phrases_Information/frase_de_nada.gif",
+    "icon_path": "GUI/Assets/Dictionary/Phrases/frase_de_nada.png"
+  },
+  "GRACIAS": {
+    "type": "Frase",
+    "movement": "Dinamico",
+    "complete_phrase": "GRACIAS",
+    "description": [
+      "Pasos a seguir: \n",
+      "1.  Levanta una mano con los dedos juntos y extendidos, mientras mantienes la otra mano abierta y con la palma hacia arriba.\n",
+      "2. Extiende el dedo medio de la mano levantada hacia abajo, de manera que toque suavemente la palma de la otra mano.\n",
+      "3. Una vez que toque la palma de la mano llevalo a su posición inicial"
+    ],
+    "phrase_path": "GUI/Assets/Phrases_Information/frase_gracias.gif",
+    "icon_path": "GUI/Assets/Dictionary/Phrases/frase_gracias.png"
+  },
+  "MAS_O_MENOS": {
+    "type": "Frase",
+    "movement": "Dinamico",
+    "complete_phrase": "MAS_O_MENOS",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Levanta una mano con los dedos extendidos y la palma viendo al suelo\n",
+      "2. Mueve la mano de forma suave, girándola ligeramente hacia la izquierda y derecha."
+    ],
+    "phrase_path": "GUI/Assets/Phrases_Information/frase_mas_o_menos.gif",
+    "icon_path": "GUI/Assets/Dictionary/Phrases/frase_mas_o_menos.png"
+  },
+  "POR_FAVOR": {
+    "type": "Frase",
+    "movement": "Dinamico",
+    "complete_phrase": "POR_FAVOR",
+    "description": [
+      "Pasos a seguir: \n",
+      "1. Junta ambas manos, palma contra palma.\n",
+      "2. Lleva las manos juntas a la altura de tu boca."
+    ],
+    "phrase_path": "GUI/Assets/Phrases_Information/frase_por_favor.gif",
+    "icon_path": "GUI/Assets/Dictionary/Phrases/frase_por_favor.png"
+  }
+}

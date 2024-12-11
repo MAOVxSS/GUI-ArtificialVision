@@ -2,8 +2,8 @@
 from tkinter import Button, PhotoImage, Label
 from GUI.gui_utils import setup_window, create_common_canvas, BUTTON_COMMON_CONFIG
 from GUI.Lessons.Alphabet.Alphabet_Mix_Lesson.alphabet_mix_lesson_logic import (
-    start_recognition_cycle, load_letter_data, MIXED_LETTERS, relative_to_assets_camera)
-from GUI.Camera.camera_logic import update_icon_letter
+    start_letters_mix_recognition_cycle, load_letter_data, MIXED_LETTERS, relative_to_assets_camera)
+from GUI.Camera.Camera_Letters.camera_letters_logic import update_icon_letter
 
 # Crear la ventana de la lección al azar del abecedario
 def create_alphabet_mix_lesson_window(window):
@@ -46,7 +46,7 @@ def create_alphabet_mix_lesson_window(window):
     canvas.create_image(378.0, 234.0, image=image_image_5)
 
     # Importar funciones necesarias para la navegación entre ventanas
-    from GUI.Camera.camera_artificial_vision_logic import stop_video_stream
+    from GUI.Camera.Camera_Letters.camera_letters_model_logic import stop_video_stream
     from GUI.gui_utils import go_home_window, go_lessons_alphabet_window
 
     # Lógica del botón "Regresar"
@@ -61,6 +61,6 @@ def create_alphabet_mix_lesson_window(window):
         update_icon_letter(window, letter_data["icon_path"])
 
     # Iniciar el ciclo de reconocimiento para las letras al azar y pasar el `progress_label` para actualizar el progreso
-    start_recognition_cycle(window, video_label, progress_label, current_letter_index)
+    start_letters_mix_recognition_cycle(window, video_label, progress_label, current_letter_index)
 
     return button_tip, button_go_back, button_go_home, images

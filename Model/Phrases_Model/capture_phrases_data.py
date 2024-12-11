@@ -4,7 +4,7 @@ import numpy as np
 from datetime import datetime
 from mediapipe.python.solutions.holistic import Holistic
 from Model.model_utils import draw_keypoints
-from Utils.paths import phrases_model_frames_data_path
+from Utils.paths import phrases_model_frames_data_path, phrases_model_test_frames_data_path
 from Utils.config import id_camera
 
 def capture_samples(path, margin_frame=2, min_cant_frames=5, delay_frames=3):
@@ -118,6 +118,12 @@ def capture_samples(path, margin_frame=2, min_cant_frames=5, delay_frames=3):
 
 # Configuración inicial para especificar la palabra a capturar y la ubicación de guardado
 if __name__ == "__main__":
-    word_name = "cuidate"  # Cambiar a la palabra o frase que se desea capturar
-    word_path = os.path.join(phrases_model_frames_data_path, word_name)  # Ruta de guardado
+    word_name = "como_estas"  # Cambiar a la palabra o frase que se desea capturar y se agrega "_test" si son de prueba
+
+    # Guardado normal
+    word_path = os.path.join(phrases_model_frames_data_path, word_name)
+
+    # Guardado de prueba
+    # word_path = os.path.join(phrases_model_test_frames_data_path, word_name)
+
     capture_samples(word_path)  # Iniciar captura de muestras

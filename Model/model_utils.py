@@ -9,6 +9,12 @@ from mediapipe.python.solutions.holistic import FACEMESH_CONTOURS, POSE_CONNECTI
 import os
 import json
 from typing import NamedTuple
+from mediapipe.python.solutions.drawing_utils import draw_landmarks
+from mediapipe.python.solutions.drawing_styles import (
+    get_default_face_mesh_contours_style,
+    get_default_pose_landmarks_style,
+    get_default_hand_landmarks_style,
+)
 
 
 def analyze_h5_keypoints(h5_path):

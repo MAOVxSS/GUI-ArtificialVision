@@ -32,11 +32,11 @@ def create_dictionary_window(window):
     button_alphabet = Button(image=button_image_alphabet, **BUTTON_COMMON_CONFIG)
     button_alphabet.place(x=704.0, y=250.0, width=546.0, height=132.0)
 
-    # Botón para acceder al vocabulario del diccionario (a implementar)
-    button_image_vocabulary = PhotoImage(file=relative_to_assets_dictionary("vocabulario.png"))
-    images["vocabulario"] = button_image_vocabulary
-    button_vocabulary = Button(image=button_image_vocabulary, **BUTTON_COMMON_CONFIG)
-    button_vocabulary.place(x=741.0, y=405.0, width=457.0, height=123.0)
+    # Botón para acceder a frases comunes
+    button_image_phrases = PhotoImage(file=relative_to_assets_dictionary("frases_comunes.png"))
+    images["frases_comunes"] = button_image_phrases
+    button_phrases = Button(image=button_image_phrases, **BUTTON_COMMON_CONFIG)
+    button_phrases.place(x=741.0, y=405.0, width=457.0, height=123.0)
 
     # Imagen decorativa en la parte superior del canvas
     image_image_2 = PhotoImage(file=relative_to_assets_dictionary("image_2.png"))
@@ -50,8 +50,7 @@ def create_dictionary_window(window):
     button_go_back.place(x=741.0, y=555.0, width=450.0, height=124.0)
 
     # Importar funciones necesarias para la navegación entre ventanas
-    from GUI.gui_utils import go_home_window
-    from GUI.gui_utils import go_dictionary_alphabet_window
+    from GUI.gui_utils import go_home_window, go_dictionary_alphabet_window, go_dictionary_phrases_window
 
     # Lógica del botón "Regresar" para volver a la ventana principal (home)
     button_go_back.config(command=lambda: go_home_window(window))
@@ -59,8 +58,11 @@ def create_dictionary_window(window):
     # Lógica del botón "Alfabeto" para acceder a la ventana del alfabeto del diccionario
     button_alphabet.config(command=lambda: go_dictionary_alphabet_window(window))
 
+    # Lógica del botón "Frases" para acceder a la ventana de las frases comunes del diccionario
+    button_phrases.config(command=lambda: go_dictionary_phrases_window(window))
+
     # Desactivar la opción de redimensionar la ventana (para mantener un diseño fijo)
     window.resizable(False, False)
 
     # Retornar los botones y las referencias a las imágenes (para gestión adicional si se requiere)
-    return button_alphabet, button_vocabulary, button_go_back, images
+    return button_alphabet, button_phrases, button_go_back, images

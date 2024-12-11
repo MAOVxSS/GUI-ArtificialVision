@@ -1,10 +1,10 @@
 from tkinter import Button, PhotoImage, Label
 from GUI.gui_utils import setup_window, create_common_canvas, BUTTON_COMMON_CONFIG
 from GUI.Lessons.Alphabet.Alphabet_Complete_Lesson.alphabet_complete_lesson_logic import (
-    start_recognition_cycle, load_letter_data, ALPHABET, relative_to_assets_camera)
-from GUI.Camera.camera_artificial_vision_logic import stop_video_stream
+    start_letters_complete_recognition_cycle, load_letter_data, ALPHABET, relative_to_assets_camera)
+from GUI.Camera.Camera_Letters.camera_letters_model_logic import stop_video_stream
 from GUI.gui_utils import go_home_window, go_lessons_alphabet_window
-from GUI.Camera.camera_logic import update_icon_letter
+from GUI.Camera.Camera_Letters.camera_letters_logic import update_icon_letter
 
 
 def create_complete_lesson_alphabet_window(window):
@@ -69,7 +69,7 @@ def create_complete_lesson_alphabet_window(window):
         update_icon_letter(window, letter_data["icon_path"])  # Actualizar el icono de la letra en la interfaz
 
     # Iniciar el ciclo de reconocimiento de señas, pasando la etiqueta de progreso para que se actualice dinámicamente
-    start_recognition_cycle(window, video_label, progress_label, current_letter_index)
+    start_letters_complete_recognition_cycle(window, video_label, progress_label, current_letter_index)
 
     # Retornar referencias a los botones y al diccionario de imágenes utilizadas
     return button_tip, button_go_back, button_go_home, images

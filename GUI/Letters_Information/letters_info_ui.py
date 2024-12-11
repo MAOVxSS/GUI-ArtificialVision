@@ -69,7 +69,7 @@ def create_letters_information_window(window, actual_letter):
     from GUI.Letters_Information.letters_info_logic import stop_letter_gif_animation
     from GUI.gui_utils import go_home_window
     from GUI.Letters_Information.letters_info_logic import show_help_window
-    from GUI.gui_utils import go_camera_window
+    from GUI.gui_utils import go_camera_letters_window
 
     # Configurar la lógica del botón "Regresar" (detiene la animación y vuelve al diccionario del alfabeto)
     button_go_back.config(command=lambda: (stop_letter_gif_animation(window), go_dictionary_alphabet_window(window)))
@@ -82,7 +82,7 @@ def create_letters_information_window(window, actual_letter):
 
     # Configurar la lógica del botón "Cámara" (detiene la animación y abre la ventana de cámara para la letra actual)
     button_go_camera.config(command=lambda: (stop_letter_gif_animation(window),
-                                             go_camera_window(window, actual_letter)))
+                                             go_camera_letters_window(window, actual_letter)))
 
     # Desactivar la opción de redimensionar la ventana (para mantener un diseño fijo)
     window.resizable(False, False)

@@ -13,7 +13,7 @@ def relative_to_assets_dictionary_alphabet(path: str) -> Path:
 
 
 # Función para crear la ventana del alfabeto
-def create_alphabet_window(window):
+def create_dictionary_alphabet_window(window):
     # Configurar la ventana principal con un color de fondo
     setup_window(window, background_color="#379FD7")
 
@@ -23,11 +23,7 @@ def create_alphabet_window(window):
     # Mantener referencias a las imágenes para evitar que sean recolectadas por el recolector de basura
     images = {}
 
-    """ 
-    Botones para cada letra del alfabeto
-    Para cada botón, se crea la imagen correspondiente y se configura con estilos comunes.
-    También se añade al diccionario `images` para evitar problemas de recolección de basura.
-    """
+    # Botones para cada letra del alfabeto
     button_image_a = PhotoImage(file=relative_to_assets_dictionary_alphabet("letter_a.png"))
     images["letter_a"] = button_image_a
     button_a = Button(image=button_image_a, **BUTTON_COMMON_CONFIG)

@@ -1,90 +1,191 @@
 import os
+import json
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
+from keras.models import Sequential
+from keras.layers import LSTM, Dense, Dropout, BatchNormalization
+from keras.regularizers import l2
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras.utils import to_categorical
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, TensorBoard
-from tensorflow.keras.regularizers import l2
+from tensorflow.keras.callbacks import EarlyStopping
+from sklearn.model_selection import train_test_split
+from keras.utils import to_categorical
+from sklearn.preprocessing import StandardScaler
+from Utils.paths import dynamic_model_json_data_path, dynamic_model_converted_data_path, generated_models_path, \
+    dynamic_model_keras_path
 
-# Rutas y variables
-from Utils.paths import generated_models_path, dynamic_model_converted_data_path
 from Utils.config import dynamic_model_name
-
-# Funciones auxiliares
 from Model.model_utils import plot_history
 
-# Configuración
-num_epoch = 100  # Número de épocas para entrenar el modelo
-batch_size = 64  # Muestras por iteración
-max_length_frames = 15  # Cantidad de frames maxima para entrenamiento
-length_keypoints = 63  # Longitud de los key points
 
+def train_and_save_model(model_path, epochs=300, max_length_frames=15, max_length_keypoints=1662):
+    # Cargar identificadores de palabras desde el archivo JSON
+    with open(dynamic_model_json_data_path, 'r') as json_file:
+        data = json.load(json_file)
+        word_ids = data.get('word_ids', [])
+        if not word_ids:
+            raise ValueError("[ERROR] No se encontraron identificadores de palabras en el archivo JSON.")
 
-# Crea y compila el modelo dinámico
-def get_model(max_length_frames, output_length: int):
-    model = Sequential()
-    model.add(LSTM(64, return_sequences=True, activation='relu', input_shape=(max_length_frames, length_keypoints),
-                   kernel_regularizer=l2(0.001)))
-    model.add(LSTM(128, return_sequences=True, activation='relu', kernel_regularizer=l2(0.001)))
-    model.add(LSTM(128, return_sequences=False, activation='relu', kernel_regularizer=l2(0.001)))
-    model.add(Dense(64, activation='relu', kernel_regularizer=l2(0.001)))
-    model.add(Dense(64, activation='relu', kernel_regularizer=l2(0.001)))
-    model.add(Dense(32, activation='relu', kernel_regularizer=l2(0.001)))
-    model.add(Dense(output_length, activation='softmax'))
-    model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['accuracy'])
-    return model
+        # Imprimir las palabras cargadas
+        print(f"[INFO] Se encontraron {len(word_ids)} palabras para entrenar: {word_ids}")
 
-
-# Entrena el modelo dinámico
-def training_model(data_path, dynamic_model_path):
-    actions = [os.path.splitext(action)[0] for action in os.listdir(data_path) if os.path.splitext(action)[1] == ".h5"]
+    # Obtener las secuencias de keypoints y etiquetas desde los archivos HDF5
     sequences, labels = [], []
-
-    for label, action in enumerate(actions):
-        hdf_path = os.path.join(data_path, f"{action}.h5")
+    for word_index, word_id in enumerate(word_ids):
+        hdf_path = os.path.join(dynamic_model_converted_data_path, f"{word_id}.h5")
+        if not os.path.exists(hdf_path):
+            print(f"[WARNING] Archivo HDF5 no encontrado: {hdf_path}. Saltando...")
+            continue
         data = pd.read_hdf(hdf_path, key='data')
-        for _, data_filtered in data.groupby('sample'):
-            sequences.append([fila['keypoints'] for _, fila in data_filtered.iterrows()])
-            labels.append(label)
+        for _, df_sample in data.groupby('sample'):
+            seq_keypoints = np.stack(df_sample['keypoints'].values)
+            sequences.append(seq_keypoints)
+            labels.append(word_index)
 
-    sequences = pad_sequences(sequences, maxlen=max_length_frames, padding='post', truncating='post', dtype='float32')
-    x = np.array(sequences)
+    if not sequences or not labels:
+        raise ValueError("[ERROR] No se encontraron secuencias ni etiquetas para entrenar el modelo.")
+
+    # Verificar cuántos datos se cargaron por palabra
+    print(f"[INFO] Se cargaron {len(sequences)} secuencias para entrenamiento.")
+
+    # Convertir las secuencias a numpy arrays
+    sequences = np.array(sequences)
+
+    # Aplanar los keypoints por frame para normalización
+    num_samples, seq_len, num_keypoints = sequences.shape
+    sequences_flat = sequences.reshape(-1, num_keypoints)
+
+    # Normalizar los keypoints
+    scaler = StandardScaler()
+    sequences_flat = scaler.fit_transform(sequences_flat)
+
+    # Restaurar la forma original
+    sequences = sequences_flat.reshape(num_samples, seq_len, num_keypoints)
+
+    # Ajustar las secuencias al tamaño máximo definido por el modelo
+    sequences = pad_sequences(
+        sequences, maxlen=max_length_frames, padding='post', truncating='post', dtype='float32'
+    )
+
+    # Convertir las etiquetas a formato categórico (one-hot encoding)
+    X = np.array(sequences)
     y = to_categorical(labels).astype(int)
 
-    print("Distribución de las etiquetas en el conjunto de datos:")
-    print(np.unique(labels, return_counts=True))
+    # Mezclar los datos antes de dividir
+    indices = np.arange(X.shape[0])
+    np.random.shuffle(indices)
+    X = X[indices]
+    y = y[indices]
 
-    x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.80)
+    # Dividir los datos en conjuntos de entrenamiento y validación
+    X_train, X_val, y_train, y_val = train_test_split(
+        X, y, test_size=0.1, random_state=42, stratify=y
+    )
 
-    model = get_model(max_length_frames, len(actions))
+    # Definir la arquitectura del modelo
+    model = Sequential()
 
-    cp_callback = ModelCheckpoint(dynamic_model_path, verbose=1, save_weights_only=False, save_best_only=True)
-    es_callback = EarlyStopping(patience=20, verbose=1, restore_best_weights=True)
-    tensorboard_callback = TensorBoard(log_dir='./logs')
+    # Primera capa LSTM con BatchNormalization
+    model.add(
+        LSTM(
+            128,
+            return_sequences=True,
+            input_shape=(max_length_frames, max_length_keypoints),
+            kernel_regularizer=l2(0.001),
+        )
+    )
+    model.add(BatchNormalization())
+    model.add(Dropout(0.3))
 
-    history = model.fit(x_train, y_train, epochs=num_epoch, batch_size=batch_size, validation_data=(x_test, y_test),
-                        callbacks=[cp_callback, es_callback, tensorboard_callback])
+    # Segunda capa LSTM
+    model.add(
+        LSTM(
+            64,
+            return_sequences=False,
+            kernel_regularizer=l2(0.001),
+        )
+    )
+    model.add(BatchNormalization())
+    model.add(Dropout(0.3))
 
-    val_loss, val_acc = model.evaluate(x_test, y_test, batch_size=batch_size)
-    print(f'Validation Loss: {val_loss}, Validation Accuracy: {val_acc}')
+    # Capas densas
+    model.add(Dense(64, activation='relu', kernel_regularizer=l2(0.001)))
+    model.add(BatchNormalization())
+    model.add(Dropout(0.3))
 
-    model.save(dynamic_model_path)
-    print(f'Model saved to {dynamic_model_path}')
+    # Capa de salida
+    model.add(Dense(len(word_ids), activation='softmax'))
 
-    if os.path.exists(dynamic_model_path):
-        print(f"Model successfully saved at {dynamic_model_path}")
+    # Compilar el modelo
+    from keras.optimizers import Adam
+    optimizer = Adam(learning_rate=0.0001)
+
+    model.compile(
+        optimizer=optimizer,
+        loss='categorical_crossentropy',
+        metrics=['accuracy']
+    )
+
+    from keras.callbacks import ReduceLROnPlateau
+
+    reduce_lr = ReduceLROnPlateau(
+        monitor='val_loss',
+        factor=0.5,
+        patience=10,
+        min_lr=1e-7,
+        verbose=1
+    )
+
+    # Configurar EarlyStopping para monitorizar la pérdida de validación
+    early_stopping = EarlyStopping(
+        monitor='val_loss',
+        patience=40,
+        restore_best_weights=True
+    )
+
+    # Entrenar el modelo
+    print("[INFO] Iniciando entrenamiento del modelo...")
+    history = model.fit(
+        X_train,
+        y_train,
+        validation_data=(X_val, y_val),
+        epochs=epochs,
+        batch_size=32,
+        callbacks=[early_stopping, reduce_lr],
+        shuffle=True
+    )
+
+    # Guardar el modelo entrenado
+    model.save(model_path)
+
+    # Scaler en el entrenamiento
+    import joblib
+    from Utils.paths import dynamic_model_keras_path
+    scaler_save_path = os.path.join(dynamic_model_keras_path, 'scaler.save')
+    joblib.dump(scaler, scaler_save_path)
+
+    print(f"[INFO] Modelo guardado en: {model_path}")
+
+    # Mostrar el resumen del modelo
+    print("[INFO] Resumen del modelo:")
+    model.summary()
+
+    # Evaluar el modelo
+    val_loss, val_acc = model.evaluate(X_val, y_val, verbose=0)
+    print(f"[INFO] Evaluación en datos de validación - Pérdida: {val_loss:.4f}, Precisión: {val_acc:.4f}")
+
+    # Verificar las clases del modelo
+    expected_classes = set(range(len(word_ids)))
+    model_classes = set(np.argmax(y_train, axis=1))
+    if expected_classes == model_classes:
+        print(
+            f"[INFO] Todas las {len(expected_classes)} palabras esperadas están correctamente clasificadas en el modelo.")
     else:
-        print("Model saving failed")
+        missing_classes = expected_classes - model_classes
+        print(f"[WARNING] Las siguientes palabras no están clasificadas en el modelo: {missing_classes}")
 
     plot_history(history)
 
 
 if __name__ == "__main__":
-    model_path = os.path.join(generated_models_path, dynamic_model_name)
-    if not os.path.exists(dynamic_model_converted_data_path):
-        print(f"Error: the path {dynamic_model_converted_data_path} does not exist.")
-        exit(1)
-    training_model(dynamic_model_converted_data_path, model_path)
+    # Entrenar el modelo y guardar el resultado en la ruta especificada
+    train_and_save_model(os.path.join(dynamic_model_keras_path, dynamic_model_name))
