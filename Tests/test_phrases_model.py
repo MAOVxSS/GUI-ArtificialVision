@@ -80,7 +80,7 @@ def evaluate_model_tflite(src=None, threshold=0.7, margin_frame=2, delay_frames=
             raise ValueError("[ERROR] No se encontraron identificadores de palabras en el archivo JSON.")
 
     # Inicializar el motor de texto a voz
-    tts_engine = initialize_tts()
+    # tts_engine = initialize_tts()
 
     # Cargar el modelo TFLite
     interpreter = Interpreter(model_path=TFLITE_MODEL_PATH)
