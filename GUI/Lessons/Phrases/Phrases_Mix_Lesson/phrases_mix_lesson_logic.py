@@ -7,8 +7,8 @@ import numpy as np
 import tensorflow as tf
 from mediapipe.python.solutions.holistic import Holistic
 from tkinter import Label
-from Utils.paths import phrases_model_json_data_path, phrases_model_keras_path
-from Utils.config import phrases_model_lite_name, id_camera, phrases_to_text, PHRASES
+from Utils.paths import phrases_model_json_data_path, dynamic_model_keras_path
+from Utils.config import dynamic_model_lite_name, id_camera, phrases_to_text, PHRASES
 from GUI.Camera.Camera_Letters.camera_letters_logic import update_icon_letter
 from GUI.Camera.Camera_Phrases.camera_phrases_model_logic import update_no_hand_banner, update_ui_on_prediction_phrases
 import joblib
@@ -24,7 +24,7 @@ SELECTED_PHRASES = random.sample(PHRASES, 5)
 random.shuffle(SELECTED_PHRASES)
 
 # Cargar el modelo TFLite
-phrases_model_path = os.path.join(phrases_model_keras_path, phrases_model_lite_name)
+phrases_model_path = os.path.join(dynamic_model_keras_path, dynamic_model_lite_name)
 interpreter_dynamic = tf.lite.Interpreter(model_path=phrases_model_path)
 interpreter_dynamic.allocate_tensors()
 input_details_dynamic = interpreter_dynamic.get_input_details()
@@ -38,7 +38,7 @@ with open(phrases_model_json_data_path, 'r') as json_file:
         raise ValueError("[ERROR] No se encontraron identificadores de palabras en el archivo JSON.")
 
 # Cargar el scaler
-scaler_path = os.path.join(phrases_model_keras_path, 'scaler.save')
+scaler_path = os.path.join(dynamic_model_keras_path, 'scaler.save')
 scaler = joblib.load(scaler_path)
 
 

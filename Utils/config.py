@@ -2,13 +2,16 @@
 
 # Nombre del los modelos generados
 dynamic_model_name = "dynamic_model.keras"
+dynamic_model_lite_name = "dynamic_model.tflite"
 static_model_name = "static_keypoint_model.keras"
 static_model_lite_name = "static_keypoint_model.tflite"
 phrases_model_keras_name = "phrases_model.keras"
+phrases_model_rnn_keras_name = "phrases_model_rnn.keras"
 phrases_model_lite_name = "phrases_model.tflite"
+phrases_model_rnn_lite_name = "phrases_model_rnn.tflite"
 
 # Camara
-id_camera = 1
+id_camera = 0
 
 # Letras y frases dinámicas
 

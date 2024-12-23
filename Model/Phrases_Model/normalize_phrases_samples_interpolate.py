@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import os
 import shutil
-from Utils.paths import phrases_model_frames_data_path
+from Utils.paths import phrases_model_frames_data_path, phrases_model_test_frames_data_path
 
 
 def read_frames_from_directory(directory):
@@ -163,16 +163,20 @@ if __name__ == "__main__":
     # Lista todas las palabras en el directorio de acciones de frames
     # word_ids = [word for word in os.listdir(phrases_model_frames_data_path)]
 
-    # Alternativamente, normalizar solo las palabras seleccionadas
-    # word_ids = ["bien", ...]
-    word_ids = ["k_der", "k_izq"]
+    # Normalizar solo las palabras seleccionadas
+    word_ids = ["k_der_test", "k_izq_test", "nn_der_test", "nn_izq_test"]
 
     # Frames máximos para cada acción
     max_actions_frames = 15
 
     # Procesa cada palabra en el directorio
     for word_id in word_ids:
-        word_path = os.path.join(phrases_model_frames_data_path, word_id)
+        # Para frames de entrenamiento
+        # word_path = os.path.join(phrases_model_frames_data_path, word_id)
+
+        # Para frames de prueba
+        word_path = os.path.join(phrases_model_test_frames_data_path, word_id)
+
         if os.path.isdir(word_path):
             print(f'Normalizando frames para "{word_id}"...')
 

@@ -10,8 +10,8 @@ from mediapipe.python.solutions.holistic import Holistic
 import mediapipe as mp
 import pandas as pd
 from tkinter import Toplevel, PhotoImage, Label
-from Utils.paths import generated_models_path, static_model_data_labels_path, phrases_model_json_data_path, phrases_model_keras_path
-from Utils.config import static_model_lite_name, phrases_model_lite_name, id_camera, phrases_to_text, ALPHABET, PHRASES
+from Utils.paths import generated_models_path, static_model_data_labels_path, phrases_model_json_data_path, dynamic_model_keras_path
+from Utils.config import static_model_lite_name, dynamic_model_lite_name, id_camera, phrases_to_text, ALPHABET
 from GUI.Camera.Camera_Letters.camera_letters_logic import update_icon_letter
 from GUI.Camera.Camera_Letters.camera_letters_model_logic import relative_to_assets_camera, update_ui_on_prediction
 from GUI.Camera.Camera_Phrases.camera_phrases_model_logic import update_no_hand_banner, update_ui_on_prediction_phrases
@@ -37,7 +37,7 @@ mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
 
 # Cargar el modelo dinámico TFLite
-phrases_model_path = os.path.join(phrases_model_keras_path, phrases_model_lite_name)
+phrases_model_path = os.path.join(dynamic_model_keras_path, dynamic_model_lite_name)
 interpreter_dynamic = tf.lite.Interpreter(model_path=phrases_model_path)
 interpreter_dynamic.allocate_tensors()
 input_details_dynamic = interpreter_dynamic.get_input_details()
@@ -51,7 +51,7 @@ with open(phrases_model_json_data_path, 'r') as json_file:
         raise ValueError("[ERROR] No se encontraron identificadores de palabras en el archivo JSON.")
 
 # Cargar el scaler
-scaler_path = os.path.join(phrases_model_keras_path, 'scaler.save')
+scaler_path = os.path.join(dynamic_model_keras_path, 'scaler.save')
 scaler = joblib.load(scaler_path)
 
 def load_letter_data(actual_letter):

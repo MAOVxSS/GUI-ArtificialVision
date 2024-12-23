@@ -65,6 +65,7 @@ def create_camera_phrases_window(window, actual_phrase):
     # Importar funciones necesarias para la navegación entre ventanas
     from GUI.Phrases_Info.phrases_info_logic import button_phrase_click
     from GUI.gui_utils import go_home_window
+    from GUI.Camera.Camera_Phrases.camera_phrases_logic import show_tip_phrases_window
     # from GUI.Camera.Camera_Letters.camera_letters_logic import show_tip_window
     from GUI.Camera.Camera_Letters.camera_letters_model_logic import stop_video_stream
 
@@ -75,7 +76,7 @@ def create_camera_phrases_window(window, actual_phrase):
     button_go_home.config(command=lambda: [stop_video_stream(video_label), go_home_window(window)])
 
     # Logica del botón "Tip"
-    # button_tip.config(command=lambda: show_tip_window(actual_phrase))
+    button_tip.config(command=lambda: show_tip_phrases_window(actual_phrase))
 
     # Desactivar la opción de redimensionar la ventana (para mantener un diseño fijo)
     window.resizable(False, False)

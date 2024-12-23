@@ -83,49 +83,50 @@ def analyze_h5_keypoints(h5_path):
 
 def plot_history(model):
     """
-    Genera gráficos del historial de entrenamiento de un modelo.
+    Generates plots of a model's training history.
 
-    Parámetros:
-    history -- Objeto de historial devuelto por el entrenamiento del modelo.
+    Parameters:
+    history -- History object returned by the model's training process.
 
-    Funcionalidad:
-    - Muestra la precisión y la pérdida durante el entrenamiento y la validación.
-    - Proporciona una comparación de métricas entre épocas.
+    Functionality:
+    - Displays accuracy and loss during training and validation.
+    - Provides a comparison of metrics across epochs.
     """
     plt.figure(figsize=(18, 6))
 
-    # Graficar precisión durante las épocas
+    # Plot accuracy over epochs
     plt.subplot(1, 3, 1)
-    plt.plot(model.history['accuracy'], label='Entrenamiento')
-    plt.plot(model.history['val_accuracy'], label='Validación')
-    plt.title('Precisión a través de las épocas')
-    plt.xlabel('Épocas')
-    plt.ylabel('Precisión')
+    plt.plot(model.history['accuracy'], label='Training')
+    plt.plot(model.history['val_accuracy'], label='Validation')
+    plt.title('Accuracy over Epochs')
+    plt.xlabel('Epochs')
+    plt.ylabel('Accuracy')
     plt.legend()
 
-    # Graficar pérdida durante las épocas
+    # Plot loss over epochs
     plt.subplot(1, 3, 2)
-    plt.plot(model.history['loss'], label='Entrenamiento')
-    plt.plot(model.history['val_loss'], label='Validación')
-    plt.title('Pérdida a través de las épocas')
-    plt.xlabel('Épocas')
-    plt.ylabel('Pérdida')
+    plt.plot(model.history['loss'], label='Training')
+    plt.plot(model.history['val_loss'], label='Validation')
+    plt.title('Loss over Epochs')
+    plt.xlabel('Epochs')
+    plt.ylabel('Loss')
     plt.legend()
 
-    # Comparación de métricas entre entrenamiento y validación
+    # Comparison of metrics between training and validation
     plt.subplot(1, 3, 3)
     epochs = range(1, len(model.history['accuracy']) + 1)
-    plt.plot(epochs, model.history['accuracy'], label='Precisión - Entrenamiento', linestyle='--')
-    plt.plot(epochs, model.history['val_accuracy'], label='Precisión - Validación', linestyle='-')
-    plt.plot(epochs, model.history['loss'], label='Pérdida - Entrenamiento', linestyle='--')
-    plt.plot(epochs, model.history['val_loss'], label='Pérdida - Validación', linestyle='-')
-    plt.title('Comparación de Métricas')
-    plt.xlabel('Épocas')
-    plt.ylabel('Valor')
+    plt.plot(epochs, model.history['accuracy'], label='Accuracy - Training', linestyle='--')
+    plt.plot(epochs, model.history['val_accuracy'], label='Accuracy - Validation', linestyle='-')
+    plt.plot(epochs, model.history['loss'], label='Loss - Training', linestyle='--')
+    plt.plot(epochs, model.history['val_loss'], label='Loss - Validation', linestyle='-')
+    plt.title('Metrics Comparison')
+    plt.xlabel('Epochs')
+    plt.ylabel('Value')
     plt.legend()
 
     plt.tight_layout()
     plt.show()
+
 
 
 def mediapipe_detection(image, model):

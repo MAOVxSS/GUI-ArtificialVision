@@ -102,9 +102,9 @@ def generate_confusion_matrix():
     plt.figure(figsize=(12, 10))
     disp = ConfusionMatrixDisplay(confusion_matrix=conf_matrix, display_labels=word_ids)
     disp.plot(include_values=True, cmap='Blues', ax=plt.gca(), xticks_rotation='vertical')
-    plt.title('Matriz de Confusión del Modelo de Reconocimiento de Señas')
-    plt.xlabel('Predicción')
-    plt.ylabel('Etiqueta Verdadera')
+    plt.title('Confusion Matrix of the Sign Recognition Model')
+    plt.xlabel('Predicted Label')
+    plt.ylabel('True Label')
     plt.tight_layout()
     plt.show()
 

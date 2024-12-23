@@ -5,13 +5,13 @@ import numpy as np
 import traceback
 from mediapipe.python.solutions.holistic import Holistic
 from tensorflow.lite.python.interpreter import Interpreter
-from Utils.paths import phrases_model_json_data_path, phrases_model_keras_path
-from Utils.config import id_camera, phrases_to_text, phrases_model_lite_name
+from Utils.paths import dynamic_model_json_data_path, dynamic_model_keras_path
+from Utils.config import id_camera, phrases_to_text, dynamic_model_lite_name
 
 # Constantes
 MODEL_FRAMES = 15
 MIN_LENGTH_FRAMES = 5
-TFLITE_MODEL_PATH = os.path.join(phrases_model_keras_path, phrases_model_lite_name)
+TFLITE_MODEL_PATH = os.path.join(dynamic_model_keras_path, dynamic_model_lite_name)
 
 def interpolate_keypoints(keypoints, target_length=15):
     current_length = len(keypoints)
@@ -48,17 +48,17 @@ def evaluate_model_tflite(src=None, threshold=0.7, margin_frame=2, delay_frames=
 
     # Cargar el scaler
     import joblib
-    scaler_path = os.path.join(phrases_model_keras_path, 'scaler.save')
+    scaler_path = os.path.join(dynamic_model_keras_path, 'scaler.save')
     if not os.path.exists(scaler_path):
         raise FileNotFoundError(f"No se encontró el scaler en {scaler_path}")
     scaler = joblib.load(scaler_path)
     if debug: print("[DEBUG] Scaler cargado correctamente.")
 
     # Cargar identificadores de palabras desde el JSON
-    if not os.path.exists(phrases_model_json_data_path):
-        raise FileNotFoundError(f"No se encontró el archivo JSON: {phrases_model_json_data_path}")
+    if not os.path.exists(dynamic_model_json_data_path):
+        raise FileNotFoundError(f"No se encontró el archivo JSON: {dynamic_model_json_data_path}")
 
-    with open(phrases_model_json_data_path, 'r') as json_file:
+    with open(dynamic_model_json_data_path, 'r') as json_file:
         data = json.load(json_file)
         word_ids = data.get('word_ids', [])
         if not word_ids:

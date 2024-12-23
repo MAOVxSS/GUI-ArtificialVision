@@ -33,6 +33,13 @@ dynamic_model_keras_path = os.path.abspath(os.path.join(root_dir, "Data", "Gener
 static_model_data_path = os.path.abspath(os.path.join(root_dir, "Data", "Static_Model_Data",
                                                       "keypoints.csv"))
 
+# ruta para acceder a los key points de las letras estáticas
+static_model_keras_path = os.path.abspath(os.path.join(root_dir, "Data", "Static_Model_Data"))
+
+# ruta para acceder a los key points de las letras estáticas, para test
+static_model_test_data_path = os.path.abspath(os.path.join(root_dir, "Data", "Static_Model_Data",
+                                                      "keypoints_test.csv"))
+
 # ruta para acceder a las etiquetas de las letras estáticas
 static_model_data_labels_path = os.path.abspath(os.path.join(root_dir, "Data", "Static_Model_Data",
                                                       "keypoints_labels.csv"))
@@ -60,6 +67,10 @@ phrases_model_test_converted_data_path = os.path.abspath(os.path.join(root_dir, 
 # ruta para acceder a los frames de prueba de las frases
 phrases_model_test_frames_data_path = os.path.abspath(os.path.join(root_dir, "Data", "Phrases_Model_Data",
                                                        "Test_Data", "Frames"))
+
+# ruta para acceder al modelo de frases generado RNN
+phrases_model_rnn_keras_path = os.path.abspath(os.path.join(root_dir, "Data", "Generated_Models",
+                                                       "Phrases_Model_RNN"))
 
 
 

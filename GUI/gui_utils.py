@@ -18,15 +18,35 @@ WINDOW_CONFIG = {
 }
 
 
-# Función para limpiar la ventana y configurarla
-def setup_window(window, background_color="#369FD6"):
-    """Configura la ventana con los estilos comunes y un color de fondo específico."""
+# Función para limpiar la ventana, configurarla y cambiar el título
+def setup_window(window, background_color="#369FD6", title=""):
+    """
+    Configura la ventana con los estilos comunes, un color de fondo específico
+    y un título personalizado.
+    """
     # Limpiar la ventana actual
     for widget in window.winfo_children():
         widget.destroy()
 
     # Configurar la ventana
     window.configure(bg=background_color)
+
+    # Establecer el título de la ventana
+    if title:
+        window.title(title)
+    else:
+        window.title("Sistema de Reconocimiento de la Lengua de Señas Mexicana")
+
+    icon_path = "GUI/Assets/Home/logo_tese.png"
+
+    # Configurar el ícono
+    if icon_path:
+        try:
+            icon = PhotoImage(file=icon_path)
+            window.iconphoto(True, icon)
+        except Exception as e:
+            print(f"Error al cargar el ícono: {e}")
+
 
 
 # Función para crear un canvas con estilos comunes

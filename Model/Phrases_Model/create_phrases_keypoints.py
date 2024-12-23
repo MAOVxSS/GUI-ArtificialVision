@@ -99,19 +99,19 @@ if __name__ == "__main__":
     # word_ids = [word for word in os.listdir(phrases_model_test_frames_data_path)]
 
     # Alternativamente, generar keypoints solo para palabras seleccionadas
-    word_ids = ["k_izq", "k_der"]
+    word_ids = ["k_der_test", "k_izq_test", "nn_der_test", "nn_izq_test"]
 
     # Procesa cada palabra en la lista
     for word_id in word_ids:
 
         #Guardar archivos normales
-        h5_path = os.path.join(phrases_model_converted_data_path, f"{word_id}.h5")
+        #h5_path = os.path.join(phrases_model_converted_data_path, f"{word_id}.h5")
 
         # Guardar archivos de prueba
-        # h5_path = os.path.join(phrases_model_test_converted_data_path, f"{word_id}.h5")
+        h5_path = os.path.join(phrases_model_test_converted_data_path, f"{word_id}.h5")
 
         # Guardar para archivos normales
-        create_keypoints(word_id, phrases_model_frames_data_path, h5_path)
+        # create_keypoints(word_id, phrases_model_frames_data_path, h5_path)
 
         # Guardar para archivos de prueba
-        # create_keypoints(word_id, phrases_model_test_frames_data_path, h5_path)
+        create_keypoints(word_id, phrases_model_test_frames_data_path, h5_path)

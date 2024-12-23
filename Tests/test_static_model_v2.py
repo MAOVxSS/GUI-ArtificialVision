@@ -7,7 +7,7 @@ import mediapipe as mp
 
 # Rutas y variables
 from Utils.paths import static_model_data_labels_path, generated_models_path
-from Utils.config import static_model_name, id_camera
+from Utils.config import static_model_lite_name, id_camera
 
 # Cargar el archivo de etiquetas predefinido
 labels_df = pd.read_csv(static_model_data_labels_path, header=None, index_col=0)
@@ -19,7 +19,7 @@ hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_c
 mp_drawing = mp.solutions.drawing_utils
 
 # Cargar el modelo .tflite en lugar del .keras
-tflite_model_path = os.path.join(generated_models_path, static_model_name)
+tflite_model_path = os.path.join(generated_models_path, static_model_lite_name)
 interpreter = tf.lite.Interpreter(model_path=tflite_model_path)
 interpreter.allocate_tensors()
 
